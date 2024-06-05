@@ -1,4 +1,4 @@
-FROM debian:slim
+FROM debian:12.5-slim
 
 # Set environment variables
 ENV GITLAB_HOME /home/git
