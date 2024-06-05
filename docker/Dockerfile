@@ -1,36 +1,28 @@
-# Use Debian as the base image
-FROM debian:latest
+FROM debian:slim
 
 # Set environment variables
 ENV GITLAB_HOME /home/git
-ENV GITLAB_USER git
-ENV GITLAB_REPO https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh
+ENV GITLAB_LOG /var/log/gitlab
+ENV GITLAB_CONF /etc/gitlab
 
-# Update and install dependencies
-RUN apt-get update && \
-    apt-get install -y \
+# Install necessary packages
+RUN apt-get update && apt-get install -y \
     curl \
     openssh-server \
     ca-certificates \
     tzdata \
     perl \
-    && apt-get clean
+    postfix
 
-# Add GitLab package repository and install GitLab
-RUN curl -s ${GITLAB_REPO} | bash && \
-    apt-get update && \
-    apt-get install -y gitlab-ce && \
-    apt-get clean
+# Install GitLab
+RUN curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | bash
+RUN apt-get install -y gitlab-ce
 
-# Expose HTTP and SSH ports
+# Configure GitLab to use an external database
+COPY gitlab.rb /etc/gitlab/gitlab.rb
+
+# Expose necessary ports
 EXPOSE 80 443 22
 
-# Configure and start GitLab
-RUN gitlab-ctl reconfigure
-
 # Start GitLab
-CMD ["gitlab-ctl", "start"]
-
-# Healthcheck to ensure GitLab is running
-HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
-    CMD curl -f http://localhost:80/ || exit 1
+CMD (/opt/gitlab/embedded/bin/runsvdir-start &) && gitlab-ctl reconfigure && tail -f /var/log/gitlab/gitlab-rails/production.log
