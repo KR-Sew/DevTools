@@ -3,6 +3,7 @@
 [![SonarQube](https://img.shields.io/badge/SonarQube-4E9BCD?style=flat&logo=sonarqube&logoColor=white&logoSize=auto&labelColor=607078)](https://www.sonarsource.com/products/sonarqube/downloads/)
 [![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat&logo=prometheus&logoColor=white&logoSize=auto&labelColor=607078)](https://prometheus.io/docs/introduction/overview/)
 [![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=jenkins&logoColor=white&logoSize=auto&labelColor=607078)](https://www.jenkins.io/)
+[![GitLab](https://img.shields.io/badge/GitLab-FC6D26?style=flat&logo=gitlab&logoColor=white)](https://about.gitlab.com/)
 
 ## (SonarQube, Prometheus, Jenkins, etc.)
 
