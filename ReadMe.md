@@ -1,8 +1,10 @@
-# 📊 Monitoring & CI/CD Automation Scripts (SonarQube, Prometheus, Jenkins, etc.)
+# 📊 Monitoring & CI/CD Automation Scripts
 
-## This repository contains a set of PowerShell and Bash scripts designed for system administrators, DevOps engineers, and SREs to automate monitoring, alerting, and CI/CD pipeline management. These scripts help deploy and configure SonarQube, Prometheus, Jenkins, Grafana, and other monitoring tools across Windows and Linux environments
+## (SonarQube, Prometheus, Jenkins, etc.)
 
-## 🚀 Features
+### This repository contains a set of PowerShell and Bash scripts designed for system administrators, DevOps engineers, and SREs to automate monitoring, alerting, and CI/CD pipeline management. These scripts help deploy and configure SonarQube, Prometheus, Jenkins, Grafana, and other monitoring tools across Windows and Linux environments
+
+### 🚀 Features
 
 - ✅ SonarQube Automation → Install, configure, and manage SonarQube for code quality analysis.
 - ✅ Prometheus & Grafana → Set up and manage monitoring dashboards and alert rules.
