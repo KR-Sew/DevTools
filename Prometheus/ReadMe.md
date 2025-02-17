@@ -1,11 +1,11 @@
-# 🛠️ Jenkins <img src="../Assets/pics/icons8-prometheus-48.svg" width="35"> Management Scripts
+# 📊 Prometheus <img src="../Assets/pics/icons8-prometheus-48.svg" width="35"> Monitoring Scripts
 
-This repository provides Jenkins automation scripts to help DevOps engineers and system administrators install, configure, and manage Jenkins servers, pipelines, and jobs. The scripts work across Linux, Windows, and Docker-based Jenkins setups, enabling automated CI/CD processes, user role management, and security configuration.
+This repository contains scripts for automating Prometheus setup, exporter configuration, alerting rules, and integration with Grafana. Whether you're deploying Prometheus in Docker, Kubernetes, or bare-metal, these scripts help simplify monitoring and alerting.
 
 ## 🚀 Features
 
-- ✅ Automated Jenkins Installation (Linux, Windows, Docker)
-- ✅ Manage Jenkins Plugins & Configuration
-- ✅ CI/CD Pipeline Automation (Jenkinsfile, Job DSL)
-- ✅ User & Role Management
-- ✅ Backup & Maintenance (Job history, logs, security updates)
+- ✅ Automated Installation → Install Prometheus on Linux, Windows, Docker.
+- ✅ Exporter Setup → Node Exporter, Blackbox Exporter, Custom Scripts.
+- ✅ PromQL Query Automation → Fetch real-time metrics using PromQL.
+- ✅ Alerting & Notification → Set up Alertmanager for Slack, Email alerts.
+- ✅ Backup & Maintenance → Manage Prometheus data retention and cleanup.
