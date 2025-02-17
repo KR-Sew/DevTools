@@ -9,3 +9,7 @@ This repository contains scripts for automating Prometheus setup, exporter confi
 - ✅ [PromQL Query Automation](./Perf/`) → Fetch real-time metrics using PromQL.
 - ✅ [Alerting & Notification](./Aware/`) → Set up Alertmanager for Slack, Email alerts.
 - ✅ [Backup & Maintenance](./Backup/) → Manage Prometheus data retention and cleanup.
+
+---
+
+🔙 [back to main menu DevTools](../)

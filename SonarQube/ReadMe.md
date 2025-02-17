@@ -10,3 +10,7 @@ This repository contains PowerShell and Bash scripts designed to simplify the in
 - ✅ [CI/CD Integration](./Automate/) → Automate scanning in Jenkins, GitHub Actions, and GitLab CI/CD.
 - ✅ [Backup & Maintenance](./Backup/) → Automate database backups and log management.
 - ✅ [Monitoring & Logs](./Perf/) → Check server health and troubleshoot issues.
+
+---
+
+🔙 [back to main menu DevTools](../)
