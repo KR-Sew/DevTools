@@ -24,3 +24,6 @@
 - 📡 [Prometheus](./Prometheus/) – Scripts for deploying and managing Prometheus monitoring, exporters, and alerting configurations.
 - ⚙️ [Jenkins](./Jenkins/) – Automation scripts for installing, configuring, and managing Jenkins jobs, plugins, and pipelines.
 - 📦 [GitLab](./GitLab/) – Scripts for managing GitLab installations, CI/CD pipelines, user roles, and backups.
+
+---
+🔙 [back to Repos](https://github.com/KR-Sew?tab=repositories)
