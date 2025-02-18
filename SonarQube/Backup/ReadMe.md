@@ -13,4 +13,4 @@ This repository contains PowerShell and Bash scripts designed to simplify the in
 
 ---
 
-🔙 [back to main menu SonarQube](../)
+🔙 [back to 📂 SonarQube](../)
