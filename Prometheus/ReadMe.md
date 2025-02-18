@@ -4,11 +4,11 @@ This repository contains scripts for automating Prometheus setup, exporter confi
 
 ## 🚀 Features
 
-- ✅ [Automated Installation](./Install/) → Install Prometheus on Linux, Windows, Docker.
-- ✅ [Exporter Setup](./Manage/) → Node Exporter, Blackbox Exporter, Custom Scripts.
-- ✅ [PromQL Query Automation](./Perf/) → Fetch real-time metrics using PromQL.
-- ✅ [Alerting & Notification](./Aware/) → Set up Alertmanager for Slack, Email alerts.
-- ✅ [Backup & Maintenance](./Backup/) → Manage Prometheus data retention and cleanup.
+- 📂 [Automated Installation](./Install/) → Install Prometheus on Linux, Windows, Docker.
+- 📂 [Exporter Setup](./Manage/) → Node Exporter, Blackbox Exporter, Custom Scripts.
+- 📂 [PromQL Query Automation](./Perf/) → Fetch real-time metrics using PromQL.
+- 📂 [Alerting & Notification](./Aware/) → Set up Alertmanager for Slack, Email alerts.
+- 📂 [Backup & Maintenance](./Backup/) → Manage Prometheus data retention and cleanup.
 
 ---
 
