@@ -6,4 +6,4 @@ This repository provides GitLab automation scripts to help DevOps engineers and 
 
 ---
 
-🔙 [back to main menu Gitlab](../)
+🔙 [back to 📂 Gitlab](../)
