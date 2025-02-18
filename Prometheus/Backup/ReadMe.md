@@ -7,4 +7,4 @@ This repository contains scripts for automating Prometheus setup, exporter confi
 
 ---
 
-🔙 [back to main menu Prometheus](../)
+🔙 [back to 📂 Prometheus](../)
