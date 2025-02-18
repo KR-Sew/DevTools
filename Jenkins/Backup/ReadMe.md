@@ -4,12 +4,6 @@ This repository provides Jenkins automation scripts to help DevOps engineers and
 
 ## 🚀 Features
 
-- ✅ [Automated Jenkins Installation](./Install/) (Linux, Windows, Docker)
-- ✅ [Manage Jenkins Plugins & Configuration](./Manage/)
-- ✅ [CI/CD Pipeline Automation](./Perf/) (Jenkinsfile, Job DSL)
-- ✅ [User & Role Management](./UAC/)
-- ✅ [Backup & Maintenance](./Backup/) (Job history, logs, security updates)
-
 ---
 
-🔙 [back to main menu Jenkins](../)
+🔙 [back to 📂 Jenkins](../)
