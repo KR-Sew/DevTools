@@ -4,11 +4,11 @@ This repository provides GitLab automation scripts to help DevOps engineers and 
 
 ## 🚀 Features
 
-- ✅ [Automated GitLab Installation](./Install/) (Linux, Windows, Docker)
-- ✅ [Repository & User Management](./Manage/)
-- ✅ [CI/CD Pipeline Configuration](./Perf/) (GitLab Runner, .gitlab-ci.yml)
-- ✅ [Backup & Restore](./Backup/) Automation
-- ✅ [Security & Access Control](./UAC/)
+- 📂 [Automated GitLab Installation](./Install/) (Linux, Windows, Docker)
+- 📂 [Repository & User Management](./Manage/)
+- 📂 [CI/CD Pipeline Configuration](./Perf/) (GitLab Runner, .gitlab-ci.yml)
+- 📂 [Backup & Restore](./Backup/) Automation
+- 📂 [Security & Access Control](./UAC/)
 
 ---
 
