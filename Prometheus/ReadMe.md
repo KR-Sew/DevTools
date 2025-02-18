@@ -12,4 +12,4 @@ This repository contains scripts for automating Prometheus setup, exporter confi
 
 ---
 
-🔙 [back to main menu DevTools](../)
+🔙 [back to main menu 📂 DevTools](../)

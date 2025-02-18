@@ -12,4 +12,4 @@ This repository provides GitLab automation scripts to help DevOps engineers and 
 
 ---
 
-🔙 [back to main menu DevTools](../)
+🔙 [back to main menu 📂 DevTools](../)
