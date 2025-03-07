@@ -6,7 +6,7 @@
 [![GitLab](https://img.shields.io/badge/GitLab-607078?style=flat&logo=gitlab&logoColor=white&logoSize=auto&labelColor=FC6D26)](https://about.gitlab.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-## SonarQube <img src="./Assets/pics/SonarQube.svg" width="25"> Prometheus <img src="./Assets/pics/icons8-prometheus-48.svg" width="25"> Jenkins <img src="./Assets/pics/icons8-jenkins-48.svg" width="25"> GitLab <img src="./Assets/pics/icons8-gitlab-48.svg" width="25">  etc.
+## SonarQube <img src="./Assets/pics/SonarQube.svg" width="25" alt="SonarQube"> Prometheus <img src="./Assets/pics/icons8-prometheus-48.svg" width="25" alt="Prometheus"> Jenkins <img src="./Assets/pics/icons8-jenkins-48.svg" width="25" alt="Jenkins"> GitLab <img src="./Assets/pics/icons8-gitlab-48.svg" width="25" alt="GitLab">  etc.
 
 ### This repository contains a set of PowerShell and Bash scripts designed for system administrators, DevOps engineers, and SREs to automate monitoring, alerting, and CI/CD pipeline management. These scripts help deploy and configure SonarQube, Prometheus, Jenkins, Grafana, and other monitoring tools across Windows and Linux environments
 
