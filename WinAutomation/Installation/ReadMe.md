@@ -10,18 +10,18 @@
 
 To create an automated installation, you need to modify the Windows Server ISO and include an unattended answer file.
 
-1. ⚙️ Download Windows Server ISO
+ 1. ⚙️ Download Windows Server ISO
 
     Download the latest Windows Server ISO (Evaluation Edition) from Microsoft [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/).
 
     Mount the ISO and copy its contents to a local folder, e.g., C:\WinServerISO.
 
-2. ⚙️ Add an Unattended Answer File
-    - for installing Windows Server with `Desktop` feature add `autunattended.xml` from this [folder](./WinServer-Desktop/autounattend.xml)
-    - for installing Windows Server in `Servercore` mode add `autounattended.xml` from this [folder](./WinServer-Core/autounattended.xml)
+ 2. ⚙️ Add an Unattended Answer File
+    - for installing Windows Server with `Desktop` feature add `autunattended.xml` from this [WinServer-Desktop/autounattend.xml)](./WinServer-Desktop/autounattend.xml)
+    - for installing Windows Server in `Servercore` mode add `autounattended.xml` from this [WinServer-Core/autounattended.xml](./WinServer-Core/autounattended.xml)
 
     Each of these files installs Windows Server Standard without user interaction
-3. ⚙️Integrate the Unattended File into the ISO
+ 3. ⚙️Integrate the Unattended File into the ISO
 
     Place the `autounattend.xml` file in the root of your installation media (USB or ISO).
 
@@ -36,8 +36,8 @@ oscdimg -m -o -u2 -bootdata:2#p0,e,bC:\WinServerISO\boot\etfsboot.com#pEF,e,bC:\
 #### Step 4: Deployment Instructions
 
 1. Copy `convert_to_standard.ps1` to your installation media (C:\) from here:
-    - for installation with Deskto features [here](./WinServer-Desktop/convert_to_std.ps1)
-    - for installation in Servercore mode [here](./WinServer-Core/convert_to_standard.ps1)
+    - for installation with Deskto features [WinServer-Desktop/convert_to_std.ps1](./WinServer-Desktop/convert_to_std.ps1)
+    - for installation in Servercore mode [WinServer-Core/convert_to_standard.ps1](./WinServer-Core/convert_to_standard.ps1)
 
    The system will boot, install Windows Server Core, and log in automatically.
 
