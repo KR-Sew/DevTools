@@ -1,30 +1,55 @@
-# 📊 Monitoring & CI/CD Automation Scripts
+# 📦 Automation installation for Windows Server with desktop or servercore mode
 
-[![SonarQube](https://img.shields.io/badge/SonarQube-4E9BCD?style=flat&logo=sonarqube&logoColor=white&logoSize=auto&labelColor=607078)](https://www.sonarsource.com/products/sonarqube/downloads/)
-[![Prometheus](https://img.shields.io/badge/Prometheus-607078?style=flat&logo=prometheus&logoColor=white&logoSize=auto&labelColor=E6522C)](https://prometheus.io/docs/introduction/overview/)
-[![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=jenkins&logoColor=white&logoSize=auto&labelColor=607078)](https://www.jenkins.io/)
-[![GitLab](https://img.shields.io/badge/GitLab-607078?style=flat&logo=gitlab&logoColor=white&logoSize=auto&labelColor=FC6D26)](https://about.gitlab.com/)
+[![PowerShell](https://custom-icon-badges.demolab.com/badge/.-Microsoft-blue.svg?style=flat&logo=powershell-core-eyecatch32&logoColor=white)](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5)
+[![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue?logo=powershell)](https://docs.microsoft.com/en-us/powershell/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-## SonarQube <img src="./Assets/pics/SonarQube.svg" width="25" alt="SonarQube"> Prometheus <img src="./Assets/pics/icons8-prometheus-48.svg" width="25" alt="Prometheus"> Jenkins <img src="./Assets/pics/icons8-jenkins-48.svg" width="25" alt="Jenkins"> GitLab <img src="./Assets/pics/icons8-gitlab-48.svg" width="25" alt="GitLab">  etc.
+## ✅ Description of installation process
 
-### This repository contains a set of PowerShell and Bash scripts designed for system administrators, DevOps engineers, and SREs to automate monitoring, alerting, and CI/CD pipeline management. These scripts help deploy and configure SonarQube, Prometheus, Jenkins, Grafana, and other monitoring tools across Windows and Linux environments
+### Step 1: Prepare a Windows Server ISO for Automated Installation
 
-### 🚀 Features
+To create an automated installation, you need to modify the Windows Server ISO and include an unattended answer file.
 
-- ✅ SonarQube Automation → Install, configure, and manage SonarQube for code quality analysis.
-- ✅ Prometheus & Grafana → Set up and manage monitoring dashboards and alert rules.
-- ✅ Jenkins CI/CD → Automate Jenkins setup, job creation, and backup management.
-- ✅ Log & Metric Collection → Extract system logs, metrics, and health status reports.
-- ✅ Cross-Platform Support → PowerShell for Windows, Bash for Linux/macOS.
+1. ⚙️ Download Windows Server ISO
 
-### 🚀 Available DevOps Tools
+    Download the latest Windows Server ISO (Evaluation Edition) from Microsoft [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/).
 
-- 📊 [SonarQube](./SonarQube/) – Scripts for installing, configuring, and automating SonarQube for code quality and security analysis.
-- 📡 [Prometheus](./Prometheus/) – Scripts for deploying and managing Prometheus monitoring, exporters, and alerting configurations.
-- ⚙️ [Jenkins](./Jenkins/) – Automation scripts for installing, configuring, and managing Jenkins jobs, plugins, and pipelines.
-- 📦 [GitLab](./GitLab/) – Scripts for managing GitLab installations, CI/CD pipelines, user roles, and backups.
+    Mount the ISO and copy its contents to a local folder, e.g., C:\WinServerISO.
+
+2. ⚙️ Add an Unattended Answer File
+    - for installing Windows Server with `Desktop` feature add `autunattended.xml` from this [folder](./WinServer-Desktop/autounattend.xml)
+    - for installing Windows Server in `Servercore` mode add `autounattended.xml` from this [folder](./WinServer-Core/autounattended.xml)
+
+    Each of these files installs Windows Server Standard without user interaction
+3. ⚙️Integrate the Unattended File into the ISO
+
+    Place the `autounattend.xml` file in the root of your installation media (USB or ISO).
+
+    Use the following command to create a new bootable ISO:
+
+```powershell
+oscdimg -m -o -u2 -bootdata:2#p0,e,bC:\WinServerISO\boot\etfsboot.com#pEF,e,bC:\WinServerISO\efi\microsoft\boot\efisys.bin C:\WinServerISO C:\WinServer_Auto.iso
+```
+
+ Now, your ISO will install Windows Server automatically with minimal input.
+
+#### Step 4: Deployment Instructions
+
+1. Copy `convert_to_standard.ps1` to your installation media (C:\) from here:
+    - for installation with Deskto features [here](./WinServer-Desktop/convert_to_std.ps1)
+    - for installation in Servercore mode [here](./WinServer-Core/convert_to_standard.ps1)
+
+   The system will boot, install Windows Server Core, and log in automatically.
+
+   The PowerShell script will run and convert the `Evaluation` Edition to `Standard`   Edition.
+  
+2. The system will reboot to apply changes.
+
+3. Final Outcome
+    - Windows Server Core installs without GUI.
+    - Automated conversion to Standard Edition happens right after installation.
+    - The system is fully configured and ready to use without manual intervention.
 
 ---
 
-🔙 [back to Repos](https://github.com/KR-Sew?tab=repositories)
+🔙 [back to Repos](../)
