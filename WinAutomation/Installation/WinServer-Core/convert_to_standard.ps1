@@ -7,7 +7,7 @@ $currentEdition = (DISM /Online /Get-CurrentEdition | Select-String "Current Edi
 Write-Host "Current Edition: $currentEdition"
 
 Write-Host "Checking Available Target Editions..."
-$targetEditions = (DISM /Online /Get-TargetEditions | Select-String "Target Edition").ToString()
+$targetEditions = (DISM /Online /Get-TargetEditions | Select-String "Target Edition" | ForEach-Object { $_.Line.Trim() })
 Write-Host "Available Target Editions: $targetEditions"
 
 if ($targetEditions -match $edition) {
