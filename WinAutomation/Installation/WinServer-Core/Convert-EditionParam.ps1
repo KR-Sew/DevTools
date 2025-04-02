@@ -7,8 +7,15 @@ param (
     [string]$productKey # Product key for converting
 )
 
-$edition = "ServerStandard"
-$productKey = "TVRH6-WHNXV-R9WG3-9XRFY-MY832" # Replace with a valid key
+
+$Defedition = "ServerStandard"
+$DefproductKey = "TVRH6-WHNXV-R9WG3-9XRFY-MY832" # Replace with a valid key
+
+# Check value $MemoryStartup (Default: $DefaultMemoryStartup) 
+if (-not $edition) { $edition = $Defedition }
+
+# Check value $MemoryStartup (Default: $DefaultMemoryStartup) 
+if (-not $productKey) { $productKey = $DefproductKey}
 
 Write-Host "Checking Current Edition..."
 $currentEdition = (DISM /Online /Get-CurrentEdition | Select-String "Current Edition").Matches.Groups[0].Value.Trim()
