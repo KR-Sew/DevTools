@@ -3,7 +3,7 @@ $edition = "ServerStandard"
 $productKey = "XXXXX-XXXXX-XXXXX-XXXXX-XXXXX" # Replace with a valid key
 
 Write-Host "Checking Current Edition..."
-$currentEdition = (DISM /Online /Get-CurrentEdition | Select-String "Current Edition").ToString()
+$currentEdition = (DISM /Online /Get-CurrentEdition | Select-String "Current Edition").Matches.Groups[0].Value.Trim()
 Write-Host "Current Edition: $currentEdition"
 
 Write-Host "Checking Available Target Editions..."
