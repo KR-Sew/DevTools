@@ -1,0 +1,46 @@
+# If you'd like to update Powershell remotely with ssh for example
+# just copy and paste the code below straight into your terminal session
+# it will start update to the latest Powershell version and creates a schedule that will start in a minute
+# you won't be able to close your ssh session just exit from pwsh(Powershell) session and Powershell will be updated
+
+@"
+`$ErrorActionPreference = 'Stop'
+
+Write-Host 'Checking current PowerShell version...' -ForegroundColor Cyan
+`$currentVersion = `$PSVersionTable.PSVersion
+Write-Host "Current version: `$currentVersion"
+
+Write-Host 'Fetching latest release from GitHub...' -ForegroundColor Cyan
+`$release = Invoke-RestMethod -Uri 'https://api.github.com/repos/PowerShell/PowerShell/releases/latest' -UseBasicParsing
+`$latestVersion = `$release.tag_name.TrimStart('v')
+Write-Host "Latest version available: `$latestVersion"
+
+if ([version]`$latestVersion -le `$currentVersion) {
+    Write-Host 'You are already on the latest version!' -ForegroundColor Green
+    return
+}
+
+`$msiAsset = `$release.assets | Where-Object { `$_.name -match 'win-x64.msi$' }
+if (-not `$msiAsset) {
+    Write-Error 'Could not find MSI installer in latest release.'
+    return
+}
+
+`$msiUrl = `$msiAsset.browser_download_url
+`$msiFile = "`$env:TEMP\PowerShell-`$latestVersion-win-x64.msi"
+
+Write-Host 'Downloading MSI installer...' -ForegroundColor Cyan
+Invoke-WebRequest -Uri `$msiUrl -OutFile `$msiFile
+
+Write-Host 'Scheduling update task...' -ForegroundColor Cyan
+`$cmd = "msiexec.exe /i `$msiFile /quiet /norestart"
+`$taskName = 'UpdatePowerShell'
+
+`$Action = New-ScheduledTaskAction -Execute 'cmd.exe' -Argument "/c `$cmd"
+`$Trigger = New-ScheduledTaskTrigger -Once -At ((Get-Date).AddMinutes(1))
+`$Principal = New-ScheduledTaskPrincipal -UserId 'SYSTEM' -RunLevel Highest
+Register-ScheduledTask -TaskName `$taskName -Action `$Action -Trigger `$Trigger -Principal `$Principal
+
+Write-Host 'Update scheduled. Please disconnect SSH session NOW!' -ForegroundColor Yellow
+Write-Host 'The update will run in about 1 minute.' -ForegroundColor Yellow
+"@ | Invoke-Expression
