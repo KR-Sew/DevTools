@@ -1,0 +1,36 @@
+ @"
+>> # Check if OpenSSH Server is already installed
+>> `$openSshCapability = Get-WindowsCapability -Online | Where-Object { `$_.Name -like 'OpenSSH.Server*' }
+>>
+>> if (`$openSshCapability.State -eq 'Installed') {
+>>     Write-Output "OpenSSH Server is already installed."
+>> } else {
+>>     Write-Output "Installing OpenSSH Server..."
+>>     try {
+>>         Add-WindowsCapability -Online -Name `$openSshCapability.Name -ErrorAction Stop
+>>         Write-Output "OpenSSH Server installed successfully."
+>>     } catch {
+>>         Write-Error "Failed to install OpenSSH Server. `$_"
+>>         exit 1
+>>     }
+>> }
+>>
+>> # Start the OpenSSH Server service
+>> Write-Output "Starting OpenSSH Server service..."
+>> try {
+>>     Start-Service -Name sshd -ErrorAction Stop
+>>     Set-Service -Name sshd -StartupType Automatic
+>>     Write-Output "OpenSSH Server service started and set to automatic."
+>> } catch {
+>>     Write-Error "Failed to start or configure the OpenSSH Server service. `$_"
+>>     exit 1
+>> }
+>>
+>> # Confirm the service status
+>> `$sshdStatus = Get-Service -Name sshd
+>> if (`$sshdStatus.Status -eq 'Running') {
+>>     Write-Output "OpenSSH Server service is running."
+>> } else {
+>>     Write-Warning "OpenSSH Server service is not running (Status: `$(`$sshdStatus.Status))."
+>> }
+>> "@ | Invoke-Expression
