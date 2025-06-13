@@ -1,0 +1,29 @@
+# Dockerfile
+FROM php:8.2-fpm-alpine
+
+# Install dependencies
+RUN apk add --no-cache \
+    bash \
+    curl \
+    git \
+    unzip \
+    libpq \
+    libzip \
+    oniguruma \
+    postgresql-dev \
+    zlib-dev \
+    libxml2-dev \
+    autoconf \
+    gcc \
+    g++ \
+    make \
+    $PHPIZE_DEPS \
+    && docker-php-ext-install pdo_pgsql mbstring
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Set working directory
+WORKDIR /var/www/html
+
+CMD ["php-fpm"]
