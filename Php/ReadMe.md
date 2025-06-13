@@ -5,7 +5,7 @@
 ![FastCGI](https://img.shields.io/badge/FastCGI-supported-lightgrey)
 ![Docker](https://img.shields.io/badge/docker-ready-blue)
 ![Issues](https://img.shields.io/github/issues/yourusername/php-toolkit)
-![Last Commit](https://img.shields.io/github/last-commit/yourusername/php-toolkit)
+![Last Commit](https://img.shields.io/github/last-commit/kr-sew/devtools)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 ## A PHP-focused repository containing web utilities, secure deployment patterns, and reusable backend scripts. Ideal for web projects using NGINX, FastCGI, PostgreSQL, and more
