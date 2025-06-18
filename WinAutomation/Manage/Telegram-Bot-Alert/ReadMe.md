@@ -4,19 +4,13 @@
 [![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue?logo=powershell)](https://docs.microsoft.com/en-us/powershell/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-## ✅ Description of installation process
+## ✅ We will:
 
-### Step 1: Prepare a Windows Server ISO for Automated Installation
+ Extend the PowerShell script to:
 
-✅ We will:
-
-    Extend the PowerShell script to:
-
-        Send an email via SMTP (e.g., using Gmail or internal SMTP)
-
-        Send a message via a Telegram bot
-
-    Configure your email and Telegram credentials
+- Send an email via SMTP (e.g., using Gmail or internal SMTP)
+- Send a message via a Telegram bot
+- Configure your email and Telegram credentials
 
 ✉️ PART 1: Email Alerts Setup
 🔧 You'll need:
