@@ -4,7 +4,7 @@
 [![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue?logo=powershell)](https://docs.microsoft.com/en-us/powershell/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-## ✅ We will:
+## ✅ We will
 
  Extend the PowerShell script to:
 
@@ -34,7 +34,6 @@ $emailFrom = "alerts@yourdomain.com"
 $emailTo = "admin@yourdomain.com"
 $emailUser = "alerts@yourdomain.com"
 $emailPass = "your_password_here"
-
 ```
 
 🤖 PART 2: Telegram Bot Setup
@@ -137,6 +136,7 @@ foreach ($event in $events) {
     }
 }
 ```
+
 🧰 Final Steps
 ✅ Save as:
 
