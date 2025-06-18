@@ -8,47 +8,150 @@
 
 ### Step 1: Prepare a Windows Server ISO for Automated Installation
 
-To create an automated installation, you need to modify the Windows Server ISO and include an unattended answer file.
+✅ We will:
 
- 1. ⚙️ Download Windows Server ISO
+    Extend the PowerShell script to:
 
-    Download the latest Windows Server ISO (Evaluation Edition) from Microsoft [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/).
+        Send an email via SMTP (e.g., using Gmail or internal SMTP)
 
-    Mount the ISO and copy its contents to a local folder, e.g., C:\WinServerISO.
+        Send a message via a Telegram bot
 
- 2. ⚙️ Add an Unattended Answer File
-    - for installing Windows Server with `Desktop` feature add `autunattended.xml` from this [WinServer-Desktop/autounattend.xml)](./WinServer-Desktop/autounattend.xml)
-    - for installing Windows Server in `Servercore` mode add `autounattended.xml` from this [WinServer-Core/autounattended.xml](./WinServer-Core/autounattended.xml)
+    Configure your email and Telegram credentials
 
-    Each of these files installs Windows Server Standard without user interaction
- 3. ⚙️Integrate the Unattended File into the ISO
+✉️ PART 1: Email Alerts Setup
+🔧 You'll need:
 
-    Place the `autounattend.xml` file in the root of your installation media (USB or ISO).
+    SMTP server (e.g., smtp.gmail.com, mail.vezu.com, etc.)
 
-    Use the following command to create a new bootable ISO:
+    Email username/password
+
+    Recipient email address
+
+🔐 Secure Credentials
+
+Store them securely (you can use Windows Credential Manager later; for now, we use plain text for simplicity):
+
+### Email config
 
 ```powershell
-oscdimg -m -o -u2 -bootdata:2#p0,e,bC:\WinServerISO\boot\etfsboot.com#pEF,e,bC:\WinServerISO\efi\microsoft\boot\efisys.bin C:\WinServerISO C:\WinServer_Auto.iso
+$smtpServer = "smtp.yourserver.com"
+$smtpPort = 587
+$emailFrom = "alerts@yourdomain.com"
+$emailTo = "admin@yourdomain.com"
+$emailUser = "alerts@yourdomain.com"
+$emailPass = "your_password_here"
+
 ```
 
- Now, your ISO will install Windows Server automatically with minimal input.
+🤖 PART 2: Telegram Bot Setup
+🔧 You'll need:
 
-#### Step 4: Deployment Instructions
+    A bot token from @BotFather
 
-1. Copy `convert_to_standard.ps1` to your installation media (C:\) from here:
-    - for installation with Deskto features [WinServer-Desktop/convert_to_std.ps1](./WinServer-Desktop/convert_to_std.ps1)
-    - for installation in Servercore mode [WinServer-Core/convert_to_standard.ps1](./WinServer-Core/convert_to_standard.ps1)
+    Your Telegram user ID or a group ID
 
-   The system will boot, install Windows Server Core, and log in automatically.
+You can get your chat ID via this URL (after sending a message to your bot):
 
-   The PowerShell script will run and convert the `Evaluation` Edition to `Standard`   Edition.
-  
-2. The system will reboot to apply changes.
+```bash
+<https://api.telegram.org/bot><YOUR_BOT_TOKEN>/getUpdates
+```
 
-3. Final Outcome
-    - Windows Server Core installs without GUI.
-    - Automated conversion to Standard Edition happens right after installation.
-    - The system is fully configured and ready to use without manual intervention.
+### Telegram config
+
+```powershell
+$telegramToken = "123456:ABCdefYourBotTokenHere"
+$telegramChatId = "123456789" # user or group chat ID
+```
+
+🧪 FINAL SCRIPT (with alerts added)
+
+### === Config ===
+
+$eventLogName = "Security"
+$eventIds = @(4728, 4729)
+$lastRecordFile = "C:\Scripts\LastRecord.txt"
+$logFile = "C:\Scripts\PrivGroupChangeLog.txt"
+
+# Email config
+
+$smtpServer = "smtp.yourserver.com"
+$smtpPort = 587
+$emailFrom = "alerts@yourdomain.com"
+$emailTo = "<admin@yourdomain.com>"
+$emailUser = "alerts@yourdomain.com"
+$emailPass = "your_password"
+
+# Telegram config
+
+$telegramToken = "123456:ABCdefYourBotTokenHere"
+$telegramChatId = "123456789"
+
+# === Script Start ===
+
+if (!(Test-Path $lastRecordFile)) { Set-Content -Path $lastRecordFile -Value 0 }
+$lastRecordId = Get-Content $lastRecordFile | ForEach-Object { [int]$_ }
+
+$events = Get-WinEvent -FilterHashtable @{LogName=$eventLogName; Id=$eventIds; StartTime=(Get-Date).AddMinutes(-5) } |
+  Where-Object { $_.RecordId -gt $lastRecordId } |
+  Sort-Object RecordId
+
+foreach ($event in $events) {
+    [xml]$eventXml = $event.ToXml()
+    $data = $eventXml.Event.EventData.Data
+
+    $targetUser = $data[0]."#text"
+    $groupName = $data[1]."#text"
+    $callerUser = $data[4]."#text"
+    $callerDomain = $data[3]."#text"
+    $time = $event.TimeCreated
+    $recordId = $event.RecordId
+
+    $action = switch ($event.Id) {
+        4728 { "added to" }
+        4729 { "removed from" }
+    }
+
+    $msg = "[{0}] {1}\{2} {3} '{4}' group (target user: {5}) [EventID: {6}, RecordID: {7}]" -f `
+        $time, $callerDomain, $callerUser, $action, $groupName, $targetUser, $event.Id, $recordId
+
+    Write-Output $msg
+    Add-Content -Path $logFile -Value $msg
+    Set-Content -Path $lastRecordFile -Value $recordId
+
+    # === Send Email ===
+    try {
+        Send-MailMessage -From $emailFrom -To $emailTo -Subject "Group Change Alert: $groupName" `
+            -Body $msg -SmtpServer $smtpServer -Port $smtpPort `
+            -UseSsl -Credential (New-Object PSCredential($emailUser, (ConvertTo-SecureString $emailPass -AsPlainText -Force)))
+    } catch {
+        Write-Warning "Email failed: $_"
+    }
+
+    # === Send Telegram Message ===
+    try {
+        $telegramUrl = "https://api.telegram.org/bot$telegramToken/sendMessage"
+        $body = @{
+            chat_id = $telegramChatId
+            text    = $msg
+            parse_mode = 'Markdown'
+        }
+        Invoke-RestMethod -Uri $telegramUrl -Method Post -Body $body
+    } catch {
+        Write-Warning "Telegram failed: $_"
+    }
+}
+
+🧰 Final Steps
+✅ Save as:
+
+C:\Scripts\Watch-PrivilegedGroupChanges.ps1
+🕒 Set a Scheduled Task:
+
+Run every 5 mins using Task Scheduler:
+
+    Action: powershell.exe
+
+    Arguments: -ExecutionPolicy Bypass -File "C:\Scripts\Watch-PrivilegedGroupChanges.ps1"
 
 ---
 
