@@ -65,6 +65,8 @@ $telegramChatId = "123456789" # user or group chat ID
 
 🧪 FINAL SCRIPT (with alerts added)
 
+```powershell
+
 ### === Config ===
 
 $eventLogName = "Security"
@@ -140,18 +142,19 @@ foreach ($event in $events) {
         Write-Warning "Telegram failed: $_"
     }
 }
-
+```
 🧰 Final Steps
 ✅ Save as:
 
-C:\Scripts\Watch-PrivilegedGroupChanges.ps1
+`C:\Scripts\Watch-PrivilegedGroupChanges.ps1`
+
 🕒 Set a Scheduled Task:
 
 Run every 5 mins using Task Scheduler:
 
-    Action: powershell.exe
+Action: powershell.exe
 
-    Arguments: -ExecutionPolicy Bypass -File "C:\Scripts\Watch-PrivilegedGroupChanges.ps1"
+Arguments: `-ExecutionPolicy Bypass -File "C:\Scripts\Watch-PrivilegedGroupChanges.ps1"`
 
 ---
 
