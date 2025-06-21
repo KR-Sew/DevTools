@@ -1,8 +1,8 @@
 <#
 .SYNOPSIS
-    Create a bootable dual-mode (UEFI + BIOS) Windows Server 2025 ISO with only one Server Core edition.
+    Create a bootable dual-mode (UEFI + BIOS) Windows Server 2025 ISO with only one Server edition.
 .DESCRIPTION
-    Mounts an original ISO, exports one Server Core edition, replaces the install.wim,
+    Mounts an original ISO, exports one server edition, replaces the install.wim,
     and creates a new ISO that boots in both BIOS and UEFI environments.
 #>
 
