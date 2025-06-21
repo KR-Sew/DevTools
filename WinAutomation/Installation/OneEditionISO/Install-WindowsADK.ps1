@@ -15,16 +15,16 @@ $winpeFile  = "$tempDir\adkwinpesetup.exe"
 # Create temp directory
 if (!(Test-Path $tempDir)) { New-Item -Path $tempDir -ItemType Directory | Out-Null }
 
-Write-Host "[+] Downloading ADK installer..."
+Write-Host "[+] Downloading ADK installer..." -ForegroundColor DarkYellow
 Invoke-WebRequest -Uri $adkUrl -OutFile $adkFile
 
-Write-Host "[+] Installing ADK Deployment Tools..."
+Write-Host "[+] Installing ADK Deployment Tools..." -ForegroundColor Cyan
 Start-Process -Wait -FilePath $adkFile -ArgumentList "/quiet /norestart /features OptionId.DeploymentTools"
 
-Write-Host "[+] Downloading WinPE Add-on..."
+Write-Host "[+] Downloading WinPE Add-on..." -ForegroundColor DarkYellow
 Invoke-WebRequest -Uri $winpeUrl -OutFile $winpeFile
 
-Write-Host "[+] Installing WinPE Add-on..."
+Write-Host "[+] Installing WinPE Add-on..." -ForegroundColor Cyan
 Start-Process -Wait -FilePath $winpeFile -ArgumentList "/quiet /norestart /features OptionId.WindowsPreinstallationEnvironment"
 
-Write-Host "`n✅ ADK and WinPE installed successfully."
+Write-Host "`n✅ ADK and WinPE installed successfully." -ForegroundColor DarkGreen
