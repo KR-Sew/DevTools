@@ -1,4 +1,4 @@
-# 📊 Monitoring & CI/CD Automation Scripts
+# 📊 Acitvation script for learning environment Windows Server 2025 SE
 
 [![SonarQube](https://img.shields.io/badge/SonarQube-4E9BCD?style=flat&logo=sonarqube&logoColor=white&logoSize=auto&labelColor=607078)](https://www.sonarsource.com/products/sonarqube/downloads/)
 [![Prometheus](https://img.shields.io/badge/Prometheus-607078?style=flat&logo=prometheus&logoColor=white&logoSize=auto&labelColor=E6522C)](https://prometheus.io/docs/introduction/overview/)
@@ -8,7 +8,7 @@
 
 ## SonarQube <img src="./Assets/pics/SonarQube.svg" width="25" alt="SonarQube"> Prometheus <img src="./Assets/pics/icons8-prometheus-48.svg" width="25" alt="Prometheus"> Jenkins <img src="./Assets/pics/icons8-jenkins-48.svg" width="25" alt="Jenkins"> GitLab <img src="./Assets/pics/icons8-gitlab-48.svg" width="25" alt="GitLab">  etc.
 
-### This repository contains a set of PowerShell and Bash scripts designed for system administrators, DevOps engineers, and SREs to automate monitoring, alerting, and CI/CD pipeline management. These scripts help deploy and configure SonarQube, Prometheus, Jenkins, Grafana, and other monitoring tools across Windows and Linux environments
+### This folder consist of files for activating license on Windows Server 2025 for learning purpose only.
 
 ### 🚀 Features
 
