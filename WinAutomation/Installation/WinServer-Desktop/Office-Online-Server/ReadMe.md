@@ -113,17 +113,17 @@
     ```powershell
       Remove-OfficeWebAppsMachine
     ```
-   - На сервере где установлен **Office Online Server**, затем добавьте ферму заново:
+   - ✅ На сервере где установлен **Office Online Server**, затем добавьте ферму заново:
    ```powershell
       New-OfficeWebAppsFarm -InternalUrl "https://your.internal.name" -ExternalUrl "https://your.external.name" -EditingEnabled -CertificateName "server cert name"
    ```
-   - Затем проверить изменения пройда по ссылке `https://servername/hosting/discovery`
+   - ✅ Затем проверить изменения пройда по ссылке `https://servername/hosting/discovery`
      и убедиться в корректности внешнего и внутреннего **url** имени сервера **Office Online Server**
 2. При попытке открыть файл может появлятся сообщение что заправшиваемый файл не может быть открыт для редактирования, доступ запрещён.
 
-  - Решение находится [тут](https://help.nextcloud.com/t/office-online-server-integration-with-nextcloud-configuration/92613/3)
+  - ✅ Решение находится [тут](https://help.nextcloud.com/t/office-online-server-integration-with-nextcloud-configuration/92613/3)
 
-  - Нужно создать `*.reg` файл со следующим содержимым:
+  - ✅ Нужно создать `*.reg` файл со следующим содержимым:
   ```cmd
       Windows Registry Editor Version 5.00
 
@@ -169,11 +169,6 @@
   ```
    - Добавить его на сервере **Office Online Server** и перезагрузить его.
      Данный файл активирует `TLS 1.2` на **OOS** сервере. В некоторых случаях возможно нужно также активировать `TLS 1.2` в настройках браузера.
-- ✅ SonarQube Automation → Install, configure, and manage SonarQube for code quality analysis.
-- ✅ Prometheus & Grafana → Set up and manage monitoring dashboards and alert rules.
-- ✅ Jenkins CI/CD → Automate Jenkins setup, job creation, and backup management.
-- ✅ Log & Metric Collection → Extract system logs, metrics, and health status reports.
-- ✅ Cross-Platform Support → PowerShell for Windows, Bash for Linux/macOS.
 
 ### 🚀 Available DevOps Tools
 
