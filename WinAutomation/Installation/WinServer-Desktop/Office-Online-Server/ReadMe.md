@@ -1,5 +1,5 @@
 
-# 📊 Установка Office Online Server 2019 на Windows Server 2022
+# 🚀 Установка Office Online Server 2019 на Windows Server 2022
 
 ![Win ACME Version](https://img.shields.io/badge/Win_ACME-v2.2.0-blue)  
 ![Let's Encrypt](https://img.shields.io/badge/Powered_by-Let's_Encrypt-brightgreen)
@@ -21,7 +21,7 @@
 3. **Установите расширение** 📦
    - [`Microsoft Identity Model Extention`](https://go.microsoft.com/fwlink/p/?LinkId=620072).    
 
-## Установка
+## 🚀 Установка
 
 1. **Запустите установку Office Online Server** 📦
    - Примите условия лиц.соглашения
@@ -169,8 +169,6 @@
   ```
    - Добавить его на сервере **Office Online Server** и перезагрузить его.
      Данный файл активирует `TLS 1.2` на **OOS** сервере. В некоторых случаях возможно нужно также активировать `TLS 1.2` в настройках браузера.
-
-### 🚀 Available DevOps Tools
 
 
 ---
