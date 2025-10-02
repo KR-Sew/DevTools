@@ -6,7 +6,7 @@
 
 ---
 
-### This folder consist of files for activating license on Windows Server 2025 for learning purpose only.
+### This folder consist of files for activating license on Windows Server 2025 for learning purpose only
 
 ### 🚀 Features
 
