@@ -62,7 +62,7 @@ function Get-InstalledProduct {
     return $null
 }
 
-function Download-File {
+function Get-Package {
     param([string]$Url, [string]$Dest)
     Write-Log "INFO" "Downloading: $Url"
     try {
@@ -79,9 +79,9 @@ function Download-File {
 function Install-MSI {
     param([string]$Path)
     $log = Join-Path $LogDir ("Install_" + (Split-Path $Path -Leaf) + ".log")
-    $args = "/i `"$Path`" /qn /norestart /l*v `"$log`""
+    $arguments = "/i `"$Path`" /qn /norestart /l*v `"$log`""
     Write-Log "INFO" "Running: msiexec $args"
-    $proc = Start-Process -FilePath "$env:WINDIR\System32\msiexec.exe" -ArgumentList $args -Wait -PassThru
+    $proc = Start-Process -FilePath "$env:WINDIR\System32\msiexec.exe" -ArgumentList $arguments -Wait -PassThru
     if ($proc.ExitCode -eq 0 -or $proc.ExitCode -eq 3010) {
         Write-Log "INFO" "MSI installed successfully (exit code $($proc.ExitCode))"
         return $true
@@ -145,7 +145,7 @@ $arch = if ([Environment]::Is64BitOperatingSystem) { "x64" } else { "x86" }
 $arrUrl = $Urls[$arch]
 $arrFile = Join-Path $LogDir (Split-Path $arrUrl -Leaf)
 
-if (-not (Download-File -Url $arrUrl -Dest $arrFile)) {
+if (-not (Get-Package -Url $arrUrl -Dest $arrFile)) {
     Write-Log "ERROR" "Failed to download ARR 3.0 installer. Exiting."
     exit 1
 }
