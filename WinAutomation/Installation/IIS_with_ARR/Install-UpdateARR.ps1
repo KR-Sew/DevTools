@@ -6,7 +6,7 @@
     and installs it if a newer version is available. Works on Windows Server 2022 and 2025.
 #>
 
-# Requires elevation
+# --- Check for admin rights ---
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
     [Security.Principal.WindowsBuiltInRole] "Administrator")) {
     Write-Error "Please run this script as Administrator."
@@ -15,9 +15,9 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 
 # --- Variables ---
 $ArrDownloadPage = "https://www.iis.net/downloads/microsoft/application-request-routing"
-$TempPath = "$env:TEMP\ARR_Installer"
-$ArrInstaller = "$TempPath\arr.msi"
-$ArrProductName = "IIS Application Request Routing"
+$TempPath        = "$env:TEMP\ARR_Installer"
+$ArrInstaller    = "$TempPath\arr.msi"
+$ArrProductName  = "IIS Application Request Routing"
 
 # --- Helper: Get Web Page Content ---
 function Get-WebContent($url) {
@@ -33,7 +33,7 @@ function Get-WebContent($url) {
 function Get-ArrPackage {
     param([string]$DownloadDirectory)
 
-    Write-Host "Fetching ARR download link from IIS.net..."
+    Write-Host "Fetching $ArrProductName download link from IIS.net..."
     $content = Get-WebContent $ArrDownloadPage
 
     # Try to find ARR 3.x download link (official MSI)
@@ -48,7 +48,7 @@ function Get-ArrPackage {
         New-Item -ItemType Directory -Path $DownloadDirectory | Out-Null
     }
 
-    Write-Host "Downloading ARR package..."
+    Write-Host "Downloading $ArrProductName package..."
     Invoke-WebRequest -Uri $downloadLink -OutFile $ArrInstaller -UseBasicParsing
     Write-Host "Downloaded to $ArrInstaller"
 }
@@ -57,19 +57,20 @@ function Get-ArrPackage {
 function Install-MSI {
     param([string]$argument)
 
-    Write-Host "Installing ARR..."
+    Write-Host "Installing $ArrProductName..."
     $process = Start-Process -FilePath "msiexec.exe" -ArgumentList "/i `"$argument`" /qn /norestart" -Wait -PassThru
     if ($process.ExitCode -ne 0) {
-        Write-Error "Installation failed with exit code $($process.ExitCode)."
+        Write-Error "$ArrProductName installation failed with exit code $($process.ExitCode)."
         exit 1
     }
 }
 
 # --- Function: Get ARR Installed Version ---
 function Get-ArrInstalledVersion {
+    Write-Host "Checking if $ArrProductName is installed..."
     $key = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"
     $subkeys = Get-ChildItem $key | ForEach-Object {
-        Get-ItemProperty $_.PSPath | Where-Object { $_.DisplayName -like "*Application Request Routing*" }
+        Get-ItemProperty $_.PSPath | Where-Object { $_.DisplayName -like "*$ArrProductName*" }
     }
     return $subkeys.DisplayVersion
 }
@@ -83,17 +84,17 @@ function Restart-IIS {
 }
 
 # --- MAIN LOGIC ---
-Write-Host "`n=== IIS Application Request Routing Installer ===`n"
+Write-Host "`n=== $ArrProductName Installer ===`n"
 
 $currentVersion = Get-ArrInstalledVersion
 if ($currentVersion) {
-    Write-Host "Detected ARR version: $currentVersion"
+    Write-Host "$ArrProductName detected. Current version: $currentVersion"
 } else {
-    Write-Host "ARR is not currently installed."
+    Write-Host "$ArrProductName is not currently installed."
 }
 
 Get-ArrPackage -DownloadDirectory $TempPath
 Install-MSI -argument $ArrInstaller
 Restart-IIS
 
-Write-Host "`nARR installation completed successfully."
+Write-Host "`n$ArrProductName installation completed successfully."
