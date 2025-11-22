@@ -1,14 +1,9 @@
-# 📊 Monitoring & CI/CD Automation Scripts
+# 📊 IIS Application Request Routing (ARR)
 
-[![SonarQube](https://img.shields.io/badge/SonarQube-4E9BCD?style=flat&logo=sonarqube&logoColor=white&logoSize=auto&labelColor=607078)](https://www.sonarsource.com/products/sonarqube/downloads/)
-[![Prometheus](https://img.shields.io/badge/Prometheus-607078?style=flat&logo=prometheus&logoColor=white&logoSize=auto&labelColor=E6522C)](https://prometheus.io/docs/introduction/overview/)
-[![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=jenkins&logoColor=white&logoSize=auto&labelColor=607078)](https://www.jenkins.io/)
-[![GitLab](https://img.shields.io/badge/GitLab-607078?style=flat&logo=gitlab&logoColor=white&logoSize=auto&labelColor=FC6D26)](https://about.gitlab.com/)
+![IIS](https://img.shields.io/badge/IIS-Internet%20Information%20Services-blue?logo=windows)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-## SonarQube <img src="./Assets/pics/SonarQube.svg" width="25" alt="SonarQube"> Prometheus <img src="./Assets/pics/icons8-prometheus-48.svg" width="25" alt="Prometheus"> Jenkins <img src="./Assets/pics/icons8-jenkins-48.svg" width="25" alt="Jenkins"> GitLab <img src="./Assets/pics/icons8-gitlab-48.svg" width="25" alt="GitLab">  etc.
-
-### This repository contains a set of PowerShell and Bash scripts designed for system administrators, DevOps engineers, and SREs to automate monitoring, alerting, and CI/CD pipeline management. These scripts help deploy and configure SonarQube, Prometheus, Jenkins, Grafana, and other monitoring tools across Windows and Linux environments
+### IIS Application Request Routing (ARR) is a module for Internet Information Services (IIS) that allows web servers to distribute incoming HTTP requests across multiple servers
 
 ### 🚀 Features
 
