@@ -30,10 +30,10 @@ function Get-Latest7ZipVersion {
 
         # Match versions like 7z2409-x64.exe
         $regex = '7z(\d{4})-(?:x64|arm64)\.exe'
-        $matches = [regex]::Matches($page.Content, $regex)
+        $matching = [regex]::Matches($page.Content, $regex)
 
-        if ($matches.Count -gt 0) {
-            $versions = $matches | ForEach-Object { $_.Groups[1].Value } | Sort-Object -Descending
+        if ($matching.Count -gt 0) {
+            $versions = $matching | ForEach-Object { $_.Groups[1].Value } | Sort-Object -Descending
             $latest = $versions[0]
             Write-Host "Latest version detected from website: $latest" -ForegroundColor Green
             return $latest
@@ -106,12 +106,12 @@ catch {
 # Install
 Write-Host "Installing 7-Zip..." -ForegroundColor Yellow
 if ($InstallerType -eq "exe") {
-    $args = "/S"
+    $arguments = "/S"
 } else {
-    $args = "/qn /norestart"
+    $arguments = "/qn /norestart"
 }
 
-$process = Start-Process $downloadPath -ArgumentList $args -Wait -PassThru
+$process = Start-Process $downloadPath -ArgumentList $arguments -Wait -PassThru
 Write-Host "Exit code: $($process.ExitCode)" -ForegroundColor Cyan
 
 if ($process.ExitCode -eq 0) {
