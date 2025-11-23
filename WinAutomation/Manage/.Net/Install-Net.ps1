@@ -8,7 +8,7 @@ $TempDir      = "$env:TEMP\dotnet-install"
 $LogFile      = "$TempDir\install-log.txt"
 $Installer    = "$TempDir\dotnet-sdk-installer.exe"
 
-# TLS for WS2016
+# TLS for WS2016 Powershell 5.1
 [Net.ServicePointManager]::SecurityProtocol =
     [Net.SecurityProtocolType]::Tls12 -bor
     [Net.SecurityProtocolType]::Tls11 -bor
@@ -26,7 +26,7 @@ function Log($msg) {
 # STEP 1 — Load download page
 # -----------------------------
 
-Write-Host "Fetching main .NET download page..."
+Write-Host "Fetching main .NET download page..." -ForegroundColor DarkCyan
 try {
     $html = Invoke-WebRequest -Uri $DownloadPage -UseBasicParsing
 }
@@ -60,7 +60,7 @@ Log "Thank-you link: $thankYouURL"
 # STEP 3 — Load thank-you page (NO REDIRECT ANYMORE)
 # -----------------------------
 
-Write-Host "Loading thank-you page..."
+Write-Host "Loading thank-you page..." -ForegroundColor DarkCyan
 try {
     $ty = Invoke-WebRequest -Uri $thankYouURL -UseBasicParsing
 }
