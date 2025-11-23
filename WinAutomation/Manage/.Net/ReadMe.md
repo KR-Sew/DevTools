@@ -16,6 +16,14 @@
 
 - ⚙️ [Update-Netcli.ps1](./Update-NetCli.ps1) # Check and update **.Net** runs with parameters
 
+- ⚙️ [Install-NetEventLog.ps1](./Install-NetEventLog.ps1) # Check and update to the latest version of .Net with adding process messages into **EventLog** on Windows systems.
+  
+   | Level| Event ID | Meaning |
+   | :--: | :--: | :--: |
+   | Information | 1000 | Normal operations (found link, download installer, instlled successfully) |
+   | Warning | 1001 | If any non-critical issue occurs (not used yet but ready) |
+   | Error | 1002 | Any failure (page load, download fails, installer fails) |
+
 ---
 
 🔙 [back to Repos](../)
