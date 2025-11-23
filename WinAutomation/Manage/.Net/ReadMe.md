@@ -1,10 +1,10 @@
-# 📦 Automation installation for Windows Server with desktop or servercore mode
+# 📦 Update and install the latest .Net version package
 
 [![PowerShell](https://custom-icon-badges.demolab.com/badge/.-Microsoft-blue.svg?style=flat&logo=powershell-core-eyecatch32&logoColor=white)](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5)
 [![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue?logo=powershell)](https://docs.microsoft.com/en-us/powershell/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-## ✅ Description of installation process
+## ✅ Here's script that can update and install **.Net** packages on a system
 
 ### Step 1: Prepare a Windows Server ISO for Automated Installation
 
