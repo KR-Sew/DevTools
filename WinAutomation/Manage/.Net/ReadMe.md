@@ -1,4 +1,4 @@
-# 📦 Update and install the latest .Net version package
+# <img width="48" height="48" src="https://img.icons8.com/color/50/net-framework.png" alt="net-framework"/> Update and install the latest .Net version package
 
 [![PowerShell](https://custom-icon-badges.demolab.com/badge/.-Microsoft-blue.svg?style=flat&logo=powershell-core-eyecatch32&logoColor=white)](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5)
 [![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue?logo=powershell)](https://docs.microsoft.com/en-us/powershell/)
@@ -6,49 +6,15 @@
 
 ## ✅ Here's script that can update and install **.Net** packages on a system
 
-### Step 1: Prepare a Windows Server ISO for Automated Installation
+### ✅ Description
 
-To create an automated installation, you need to modify the Windows Server ISO and include an unattended answer file.
+- ⚙️ [Install-Net.ps1](./Install-Net.ps1) # Installation script that works with an old version of Windows Server 2016 for example. Scritp finds the latest version of .Net and then install it.
 
- 1. ⚙️ Download Windows Server ISO
+- ⚙️ [Install-Netcore.ps1](./Install-Netcore.ps1) # Check and update **.Net** to the latest version with straightforward link to download package. Works on any Windows version, however over time the link can be change and doesn't work properly.
 
-    Download the latest Windows Server ISO (Evaluation Edition) from Microsoft [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/).
+- ⚙️ [Update-Net.ps1](./Update-Net.ps1) # Check and update **.Net** on a mondern Windows Server and Windows Desktop platform
 
-    Mount the ISO and copy its contents to a local folder, e.g., C:\WinServerISO.
-
- 2. ⚙️ Add an Unattended Answer File
-    - for installing Windows Server with `Desktop` feature add `autunattended.xml` from this [WinServer-Desktop/autounattend.xml)](./WinServer-Desktop/autounattend.xml)
-    - for installing Windows Server in `Servercore` mode add `autounattended.xml` from this [WinServer-Core/autounattended.xml](./WinServer-Core/autounattended.xml)
-
-    Each of these files installs Windows Server Standard without user interaction
- 3. ⚙️Integrate the Unattended File into the ISO
-
-    Place the `autounattend.xml` file in the root of your installation media (USB or ISO).
-
-    Use the following command to create a new bootable ISO:
-
-```powershell
-oscdimg -m -o -u2 -bootdata:2#p0,e,bC:\WinServerISO\boot\etfsboot.com#pEF,e,bC:\WinServerISO\efi\microsoft\boot\efisys.bin C:\WinServerISO C:\WinServer_Auto.iso
-```
-
- Now, your ISO will install Windows Server automatically with minimal input.
-
-#### Step 4: Deployment Instructions
-
-1. Copy `convert_to_standard.ps1` to your installation media (C:\) from here:
-    - for installation with Deskto features [WinServer-Desktop/convert_to_std.ps1](./WinServer-Desktop/convert_to_std.ps1)
-    - for installation in Servercore mode [WinServer-Core/convert_to_standard.ps1](./WinServer-Core/convert_to_standard.ps1)
-
-   The system will boot, install Windows Server Core, and log in automatically.
-
-   The PowerShell script will run and convert the `Evaluation` Edition to `Standard`   Edition.
-  
-2. The system will reboot to apply changes.
-
-3. Final Outcome
-    - Windows Server Core installs without GUI.
-    - Automated conversion to Standard Edition happens right after installation.
-    - The system is fully configured and ready to use without manual intervention.
+- ⚙️ [Update-Netcli.ps1](./Update-NetCli.ps1) # Check and update **.Net** runs with parameters
 
 ---
 
