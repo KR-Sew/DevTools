@@ -108,11 +108,11 @@ catch {
 # STEP 6 — Install silently
 # -----------------------------
 
-Write-Host "Installing .NET..."
+Write-Host "Installing .NET..." -ForegroundColor Green
 try {
     Start-Process -FilePath $Installer -ArgumentList "/quiet /norestart" -Wait
     Log "Installation SUCCESS"
-    Write-Host "Installation completed."
+    Write-Host "Installation completed." -ForegroundColor Green
 }
 catch {
     Write-Error "Installation failed: $_"
