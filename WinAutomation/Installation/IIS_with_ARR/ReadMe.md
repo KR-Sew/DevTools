@@ -2,7 +2,7 @@
 
 ## 📊 IIS Application Request Routing (ARR)
 
-![IIS](https://img.shields.io/badge/IIS-Internet%20Information%20Services-blue?logo=windows)
+[![IIS](https://custom-icon-badges.demolab.com/badge/IIS-Microsoft-0078D6?style=flat&logo=microsoft-iis-server&logoColor=white)](https://www.iis.net/)
 ![ASP.NET Core on IIS](https://img.shields.io/badge/ASP.NET%20Core-on%20IIS-512BD4?logo=dotnet)
 ![IIS HTTPS](https://img.shields.io/badge/IIS-HTTPS%20Enabled-0A74DA?logo=windows)
 ![IIS DevOps](https://img.shields.io/badge/IIS-DevOps-success?logo=windows)
@@ -12,18 +12,14 @@
 
 ### 🚀 Features
 
-- ✅ SonarQube Automation → Install, configure, and manage SonarQube for code quality analysis.
-- ✅ Prometheus & Grafana → Set up and manage monitoring dashboards and alert rules.
-- ✅ Jenkins CI/CD → Automate Jenkins setup, job creation, and backup management.
-- ✅ Log & Metric Collection → Extract system logs, metrics, and health status reports.
-- ✅ Cross-Platform Support → PowerShell for Windows, Bash for Linux/macOS.
+- ✅
 
 ### 🚀 Available DevOps Tools
 
-- 📊 [SonarQube](./SonarQube/) – Scripts for installing, configuring, and automating SonarQube for code quality and security analysis.
-- 📡 [Prometheus](./Prometheus/) – Scripts for deploying and managing Prometheus monitoring, exporters, and alerting configurations.
-- ⚙️ [Jenkins](./Jenkins/) – Automation scripts for installing, configuring, and managing Jenkins jobs, plugins, and pipelines.
-- 📦 [GitLab](./GitLab/) – Scripts for managing GitLab installations, CI/CD pipelines, user roles, and backups.
+- 📊 [SonarQube](./SonarQube/) –
+- 📡 [Prometheus](./Prometheus/) –
+- ⚙️ [Jenkins](./Jenkins/) 
+- 📦 [GitLab](./GitLab/) – 
 
 ---
 
