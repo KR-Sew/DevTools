@@ -86,14 +86,14 @@ if (-not $InstallerURL) {
     exit 1
 }
 
-Write-Host "Final installer URL: $InstallerURL"
+Write-Host "Final installer URL: $InstallerURL" -ForegroundColor DarkCyan
 Log "Installer URL: $InstallerURL"
 
 # -----------------------------
 # STEP 5 — Download installer
 # -----------------------------
 
-Write-Host "Downloading installer..."
+Write-Host "Downloading installer..." -ForegroundColor DarkCyan
 try {
     Invoke-WebRequest -Uri $InstallerURL -OutFile $Installer -UseBasicParsing
     Log "Downloaded installer"
