@@ -4,7 +4,7 @@
 [![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue?logo=powershell)](https://docs.microsoft.com/en-us/powershell/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-## ✅ Description of installation process
+## ✅ Description of the content
 
 ### Step 1: Prepare a Windows Server ISO for Automated Installation
 
