@@ -1,4 +1,4 @@
-# 📊 Monitoring & CI/CD Automation Scripts
+# 📊 Installing and managing Debian/Ubuntu software
 
 
 [![WSL](https://img.shields.io/badge/WSL-Microsoft-blue?style=flat&logo=linux&logoColor=white&logoSize=auto&labelColor=4E9A06)](https://learn.microsoft.com/en-us/windows/wsl/about)
