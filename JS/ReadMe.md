@@ -1,32 +1,22 @@
-# 📊 Monitoring & CI/CD Automation Scripts
+# 📊 JavaScript / Node.js / Vue Repository
 
-[![SonarQube](https://img.shields.io/badge/SonarQube-4E9BCD?style=flat&logo=sonarqube&logoColor=white&logoSize=auto&labelColor=607078)](https://www.sonarsource.com/products/sonarqube/downloads/)
-[![Prometheus](https://img.shields.io/badge/Prometheus-607078?style=flat&logo=prometheus&logoColor=white&logoSize=auto&labelColor=E6522C)](https://prometheus.io/docs/introduction/overview/)
-[![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=jenkins&logoColor=white&logoSize=auto&labelColor=607078)](https://www.jenkins.io/)
-[![GitLab](https://img.shields.io/badge/GitLab-607078?style=flat&logo=gitlab&logoColor=white&logoSize=auto&labelColor=FC6D26)](https://about.gitlab.com/)
-[![PowerShell](https://custom-icon-badges.demolab.com/badge/.-PowerShell-blue.svg?style=flat&logo=powershell-core-eyecatch32&logoColor=white)](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5)
-[![WSL](https://img.shields.io/badge/WSL-Microsoft-blue?style=flat&logo=linux&logoColor=white&logoSize=auto&labelColor=4E9A06)](https://learn.microsoft.com/en-us/windows/wsl/about)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![License](https://img.shields.io/github/license/yourusername/js-lab)
+![Node.js](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-yellow)
+![Vue.js](https://img.shields.io/badge/Vue-3.x-brightgreen)
+![Issues](https://img.shields.io/github/issues/yourusername/js-lab)
+![Last Commit](https://img.shields.io/github/last-commit/yourusername/js-lab)
 
-## SonarQube <img src="./Assets/pics/SonarQube.svg" width="25" alt="SonarQube"> Prometheus <img src="./Assets/pics/icons8-prometheus-48.svg" width="25" alt="Prometheus"> Jenkins <img src="./Assets/pics/icons8-jenkins-48.svg" width="25" alt="Jenkins"> GitLab <img src="./Assets/pics/icons8-gitlab-48.svg" width="25" alt="GitLab">  etc.
+## <img src="../Assets/pics/icons8-javascript-48.png" width="28" alt="JavaScript"> JavaScript <img src="../Assets/pics/JS.ico" width="28" alt="NodeJS"> Node.js <img src="../Assets/pics/icons8-vue.js-48.png" width="28" alt="Vue"> Vue Repository
 
-### This repository contains a set of PowerShell and Bash scripts designed for system administrators, DevOps engineers, and SREs to automate monitoring, alerting, and CI/CD pipeline management. These scripts help deploy and configure SonarQube, Prometheus, Jenkins, Grafana, and other monitoring tools across Windows and Linux environments
+### A curated collection of JavaScript experiments, utility scripts, Node.js tools, and Vue components. This repo serves as a sandbox for modern web development techniques, performance optimizations, and reusable code for both frontend and backend use cases
 
 ### 🚀 Features
 
-- ✅ SonarQube Automation → Install, configure, and manage SonarQube for code quality analysis.
-- ✅ Prometheus & Grafana → Set up and manage monitoring dashboards and alert rules.
-- ✅ Jenkins CI/CD → Automate Jenkins setup, job creation, and backup management.
-- ✅ Log & Metric Collection → Extract system logs, metrics, and health status reports.
-- ✅ Cross-Platform Support → PowerShell for Windows, Bash for Linux/macOS.
-
-### 🚀 Available DevOps Tools
-
-- 📊 [SonarQube](./SonarQube/) – Scripts for installing, configuring, and automating SonarQube for code quality and security analysis.
-- 📡 [Prometheus](./Prometheus/) – Scripts for deploying and managing Prometheus monitoring, exporters, and alerting configurations.
-- ⚙️ [Jenkins](./Jenkins/) – Automation scripts for installing, configuring, and managing Jenkins jobs, plugins, and pipelines.
-- 📦 [GitLab](./GitLab/) – Scripts for managing GitLab installations, CI/CD pipelines, user roles, and backups.
-- 📦 [Windows Automation](./WinAutomation/) - managing Windows installation process and other things.
+- ✅ Reusable Node.js utilities and CLI tools
+- ✅ Vue.js components and frontend snippets
+- ✅ Automation scripts and small web apps
+- ✅ Examples of modern JavaScript patterns and best practices
 
 ---
 
