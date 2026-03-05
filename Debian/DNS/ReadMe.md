@@ -1,10 +1,6 @@
 # 📊 Monitoring & CI/CD Automation Scripts
 
-[![SonarQube](https://img.shields.io/badge/SonarQube-4E9BCD?style=flat&logo=sonarqube&logoColor=white&logoSize=auto&labelColor=607078)](https://www.sonarsource.com/products/sonarqube/downloads/)
-[![Prometheus](https://img.shields.io/badge/Prometheus-607078?style=flat&logo=prometheus&logoColor=white&logoSize=auto&labelColor=E6522C)](https://prometheus.io/docs/introduction/overview/)
-[![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=jenkins&logoColor=white&logoSize=auto&labelColor=607078)](https://www.jenkins.io/)
-[![GitLab](https://img.shields.io/badge/GitLab-607078?style=flat&logo=gitlab&logoColor=white&logoSize=auto&labelColor=FC6D26)](https://about.gitlab.com/)
-[![PowerShell](https://custom-icon-badges.demolab.com/badge/.-PowerShell-blue.svg?style=flat&logo=powershell-core-eyecatch32&logoColor=white)](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5)
+
 [![WSL](https://img.shields.io/badge/WSL-Microsoft-blue?style=flat&logo=linux&logoColor=white&logoSize=auto&labelColor=4E9A06)](https://learn.microsoft.com/en-us/windows/wsl/about)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
