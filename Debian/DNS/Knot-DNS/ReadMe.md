@@ -7,8 +7,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Database Icon by icons8.com](https://img.shields.io/badge/Database%20Icon%20by%20icon8.com-54f2f2.svg?logo=vsc&logoColor=white)](https://icons8.com)
 
-## SonarQube 
-### 
 ### 🚀 Features
 
 - ✅ SonarQube Automation → Install, configure, and manage SonarQube for code quality analysis.
