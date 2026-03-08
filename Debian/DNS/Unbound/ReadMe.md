@@ -1,4 +1,4 @@
-# 📊 Installing Unbound resolver on Debian 13
+# <img src="../../../Assets/pics/ico-Unbound.svg" width=120 alt="Bash Scripts Collection"> Installing resolver on Debian 13
 
 [![Debian](https://img.shields.io/badge/Debian-607078?style=flat&logo=debian&logoColor=white&logoSize=auto&labelColor=a81d33)](https://www.debian.org/)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-607078?style=flat&logo=ubuntu&logoColor=white&logoSize=auto&labelColor=e95420)](https://ubuntu.com/download)
