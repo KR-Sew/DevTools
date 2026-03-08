@@ -1,4 +1,4 @@
-# 📊 Installing Knot-DNS from source
+# <img src="../../../Assets/pics/ico-Knot-DNS.svg" width=120 alt="Bash Scripts Collection"> Installing from source
 
 [![Debian](https://img.shields.io/badge/Debian-607078?style=flat&logo=debian&logoColor=white&logoSize=auto&labelColor=a81d33)](https://www.debian.org/)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-607078?style=flat&logo=ubuntu&logoColor=white&logoSize=auto&labelColor=e95420)](https://ubuntu.com/download)
