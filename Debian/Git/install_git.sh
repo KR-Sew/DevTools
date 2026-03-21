@@ -51,10 +51,19 @@ install_dependencies() {
 
     sudo apt update
 
+    if apt-cache policy | grep -q backports; then
+        log_info "Using backports for curl dependencies"
+
+        sudo apt install -y -t trixie-backports \
+            libcurl4-openssl-dev
+    else
+        sudo apt install -y \
+            libcurl4-openssl-dev
+    fi
+
     sudo apt install -y \
         build-essential \
         libssl-dev \
-        libcurl4-openssl-dev \
         libexpat1-dev \
         gettext \
         zlib1g-dev \
