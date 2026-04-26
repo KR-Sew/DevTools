@@ -1,4 +1,4 @@
-#   Installing and managing <img src="./../Assets/pics/101872_debian_512x512.png" width="35" alt="Debian">  Debian <img src="./../Assets/pics/icons8-ubuntu-96.png" width="35" alt="Debian"> Ubuntu software
+#   Installing and managing <img src="../../Assets/pics/101872_debian_512x512.png" width="35" alt="Debian">  Debian <img src="../../Assets/pics/icons8-ubuntu-96.png" width="35" alt="Debian"> Ubuntu software
 
 
 [![Debian](https://img.shields.io/badge/Debian-607078?style=flat&logo=debian&logoColor=white&logoSize=auto&labelColor=a81d33)](https://www.debian.org/)
