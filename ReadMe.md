@@ -27,6 +27,7 @@
 - ⚙️ [Jenkins](./Jenkins/) – Automation scripts for installing, configuring, and managing Jenkins jobs, plugins, and pipelines.
 - 📦 [GitLab](./GitLab/) – Scripts for managing GitLab installations, CI/CD pipelines, user roles, and backups.
 - 📦 [Windows Automation](./WinAutomation/) - managing Windows installation process and other things.
+- 📦 [Debian Automation](./Debian/) - installing and managing Debian/Ubuntu
 
 ---
 
