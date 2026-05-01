@@ -11,6 +11,12 @@ param (
     [Parameter()]
     [switch]$UseShadowLink,
 
+    [Parameter()]
+    [string[]]$ExcludeDirs = @("DfsrPrivate","System Volume Information"),
+
+    [Parameter()]
+    [string[]]$ExcludeFiles = @("*.log","*.tmp"),
+
     [string]$LogPath = "C:\Logs",
 
     [int]$Threads = 16,
@@ -129,6 +135,20 @@ function Invoke-RoboCopy {
         "/TEE"
         "/LOG:$LogFile"
     )
+
+    # 🔹 Exclude directories (DFSR-safe)
+    if ($ExcludeDirs -and $ExcludeDirs.Count -gt 0) {
+        Write-Log "Excluding directories: $($ExcludeDirs -join ', ')"
+        $Options += "/XD"
+        $Options += $ExcludeDirs
+    }
+
+    # 🔹 Exclude files (optional)
+    if ($ExcludeFiles -and $ExcludeFiles.Count -gt 0) {
+        Write-Log "Excluding files: $($ExcludeFiles -join ', ')"
+        $Options += "/XF"
+        $Options += $ExcludeFiles
+    }
 
     switch ($Mode) {
         "Baseline" { $CopyMode = "/E" }
