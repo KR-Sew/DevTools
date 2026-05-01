@@ -8,6 +8,9 @@ param (
     [Parameter(Mandatory = $true)]
     [string]$DestinationFolder,   # e.g. "P:\Shares\Projects"
 
+    [Parameter()]
+    [switch]$UseShadowLink,
+
     [string]$LogPath = "C:\Logs",
 
     [int]$Threads = 16,
@@ -57,6 +60,39 @@ function New-ShadowCopy {
     Write-Log "Shadow copy created: $($shadowObj.DeviceObject)"
 
     return $shadowObj
+}
+
+# =========================
+# Create ShadowLog(SymLink)
+# =========================
+function New-ShadowLink {
+    param(
+        [string]$ShadowDevice,
+        [string]$LinkPath = "C:\ShadowCopy"
+    )
+
+    if (Test-Path $LinkPath) {
+        Remove-Item $LinkPath -Force -Recurse
+    }
+
+    Write-Log "Creating shadow link: $LinkPath -> $ShadowDevice"
+
+    cmd /c mklink /d $LinkPath "$ShadowDevice" | Out-Null
+
+    if (!(Test-Path $LinkPath)) {
+        throw "Failed to create shadow link"
+    }
+
+    return $LinkPath
+}
+
+function Remove-ShadowLink {
+    param([string]$LinkPath)
+
+    if (Test-Path $LinkPath) {
+        Write-Log "Removing shadow link: $LinkPath"
+        Remove-Item $LinkPath -Force -Recurse
+    }
 }
 
 # =========================
