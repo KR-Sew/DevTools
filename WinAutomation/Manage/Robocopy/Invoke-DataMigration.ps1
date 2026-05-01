@@ -153,13 +153,28 @@ function Invoke-RoboCopy {
 
 switch ($Mode) {
 
-    "Baseline" {
+ "Baseline" {
 
-        $shadow = New-ShadowCopy -Volume $SourceVolume
+    $shadow = New-ShadowCopy -Volume $SourceVolume
 
-        $ShadowSource = "$($shadow.DeviceObject)\$SourceFolder"
+    try {
+        if ($UseShadowLink) {
+
+            $LinkPath = New-ShadowLink -ShadowDevice $shadow.DeviceObject
+
+            $ShadowSource = Join-Path $LinkPath $SourceFolder
+        }
+        else {
+            $ShadowSource = "$($shadow.DeviceObject)\$SourceFolder"
+        }
 
         Invoke-RoboCopy -Source $ShadowSource -Destination $DestinationFolder -Mode "Baseline"
+    }
+    finally {
+
+        if ($UseShadowLink) {
+            Remove-ShadowLink -LinkPath $LinkPath
+        }
 
         if (-not $KeepShadow) {
             Remove-ShadowCopy -ShadowObject $shadow
@@ -168,7 +183,7 @@ switch ($Mode) {
             Write-Log "Shadow copy retained as requested"
         }
     }
-
+}
     "Sync" {
 
         $Source = Join-Path $SourceVolume $SourceFolder
