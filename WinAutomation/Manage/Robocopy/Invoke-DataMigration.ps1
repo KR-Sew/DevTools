@@ -74,12 +74,8 @@ function New-ShadowCopy {
 function New-ShadowLink {
     param(
         [string]$ShadowDevice,
-        [string]$LinkPath = "C:\ShadowCopy"
+        [string]$LinkPath
     )
-
-    if (Test-Path $LinkPath) {
-        Remove-Item $LinkPath -Force -Recurse
-    }
 
     Write-Log "Creating shadow link: $LinkPath -> $ShadowDevice"
 
@@ -91,6 +87,7 @@ function New-ShadowLink {
 
     return $LinkPath
 }
+
 # Remove shadow link
 function Remove-ShadowLink {
     param([string]$LinkPath)
