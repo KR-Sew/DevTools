@@ -187,7 +187,13 @@ switch ($Mode) {
     try {
         if ($UseShadowLink) {
 
-            $LinkPath = New-ShadowLink -ShadowDevice $shadow.DeviceObject
+            $LinkPath = "C:\ShadowCopy_$([guid]::NewGuid().ToString().Substring(0,8))"
+
+            $LinkPath = New-ShadowLink -ShadowDevice $shadow.DeviceObject -LinkPath $LinkPath
+
+                 if (-not (Test-Path $LinkPath)) {
+                    throw "Shadow link was not created properly"
+                }
 
             $ShadowSource = Join-Path $LinkPath $SourceFolder
         }
