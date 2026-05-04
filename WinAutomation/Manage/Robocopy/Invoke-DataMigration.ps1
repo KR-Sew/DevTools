@@ -91,13 +91,20 @@ function New-ShadowLink {
 
     return $LinkPath
 }
-
+# Remove shadow link
 function Remove-ShadowLink {
     param([string]$LinkPath)
 
     if (Test-Path $LinkPath) {
         Write-Log "Removing shadow link: $LinkPath"
-        Remove-Item $LinkPath -Force -Recurse
+
+        try {
+            Remove-Item $LinkPath -Force -ErrorAction Stop
+        }
+        catch {
+            Write-Log "Fallback to cmd rmdir due to reparse issue" "WARN"
+            cmd /c rmdir "$LinkPath"
+        }
     }
 }
 
