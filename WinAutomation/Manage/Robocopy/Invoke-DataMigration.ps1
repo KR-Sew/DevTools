@@ -74,12 +74,8 @@ function New-ShadowCopy {
 function New-ShadowLink {
     param(
         [string]$ShadowDevice,
-        [string]$LinkPath = "C:\ShadowCopy"
+        [string]$LinkPath
     )
-
-    if (Test-Path $LinkPath) {
-        Remove-Item $LinkPath -Force -Recurse
-    }
 
     Write-Log "Creating shadow link: $LinkPath -> $ShadowDevice"
 
@@ -92,12 +88,20 @@ function New-ShadowLink {
     return $LinkPath
 }
 
+# Remove shadow link
 function Remove-ShadowLink {
     param([string]$LinkPath)
 
     if (Test-Path $LinkPath) {
         Write-Log "Removing shadow link: $LinkPath"
-        Remove-Item $LinkPath -Force -Recurse
+
+        try {
+            Remove-Item $LinkPath -Force -ErrorAction Stop
+        }
+        catch {
+            Write-Log "Fallback to cmd rmdir due to reparse issue" "WARN"
+            cmd /c rmdir "$LinkPath"
+        }
     }
 }
 
@@ -180,7 +184,13 @@ switch ($Mode) {
     try {
         if ($UseShadowLink) {
 
-            $LinkPath = New-ShadowLink -ShadowDevice $shadow.DeviceObject
+            $LinkPath = "C:\ShadowCopy_$([guid]::NewGuid().ToString().Substring(0,8))"
+
+            $LinkPath = New-ShadowLink -ShadowDevice $shadow.DeviceObject -LinkPath $LinkPath
+
+                 if (-not (Test-Path $LinkPath)) {
+                    throw "Shadow link was not created properly"
+                }
 
             $ShadowSource = Join-Path $LinkPath $SourceFolder
         }
