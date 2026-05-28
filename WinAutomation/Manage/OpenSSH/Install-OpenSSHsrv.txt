@@ -1,4 +1,4 @@
- @"
+@"
 # Check if OpenSSH Server is already installed
  `$openSshCapability = Get-WindowsCapability -Online | Where-Object { `$_.Name -like 'OpenSSH.Server*' }
 
