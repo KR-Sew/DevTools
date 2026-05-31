@@ -6,7 +6,7 @@
 
 ## Window operating system automation: Installing, Managing, Monitoring
 
-### This repository contains a set of scripts designed for installing, managing and monitoring Windows environments
+This repository contains a set of scripts designed for installing, managing and monitoring Windows environments
 
 ### 🚀 Features
 
