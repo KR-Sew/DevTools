@@ -1,0 +1,4 @@
+/srv/gitlab/config      -> GitLab config
+/srv/gitlab/logs        -> GitLab logs
+/srv/gitlab/data        -> GitLab data
+/srv/gitlab/postgres    -> PostgreSQL volume (not strictly necessary to back up this folder if using `pg_dump`)
