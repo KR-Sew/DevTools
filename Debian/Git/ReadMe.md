@@ -1,4 +1,4 @@
-#   Installing and managing <img src="../../Assets/pics/101872_debian_512x512.png" width="35" alt="Debian">  Debian <img src="../../Assets/pics/icons8-ubuntu-96.png" width="35" alt="Debian"> Ubuntu software
+#   Installing and updating Git and GH CLI <img src="../../Assets/pics/101872_debian_512x512.png" width="35" alt="Debian">  Debian <img src="../../Assets/pics/icons8-ubuntu-96.png" width="35" alt="Debian"> Ubuntu from source.
 
 
 [![Debian](https://img.shields.io/badge/Debian-607078?style=flat&logo=debian&logoColor=white&logoSize=auto&labelColor=a81d33)](https://www.debian.org/)
@@ -11,10 +11,9 @@
 
 ### 🚀 Features
 
-- ✅ [Install, configure, and manage Debian](./Install/)
-- ✅ [Install, configure Git](./Git/)
-- ✅ [Install, configure and manage DNS services](./DNS/)
-
+- ✅ [Install or update Git and Gh CLI on Debian/Ubuntu](./install_git.sh)
+  - this script install or update Git and Git CLI to the latest version from source.
+  
 ---
 
 🔙 [back to Repos](https://github.com/KR-Sew?tab=repositories)
