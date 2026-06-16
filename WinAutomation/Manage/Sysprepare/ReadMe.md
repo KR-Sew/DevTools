@@ -1,4 +1,4 @@
-# 📦 Automation installation for Windows Server with desktop or servercore mode
+# 📦 Replacing the SID for the cloning and deployment process 
 
 [![PowerShell](https://custom-icon-badges.demolab.com/badge/.-Microsoft-blue.svg?style=flat&logo=powershell-core-eyecatch32&logoColor=white)](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5)
 [![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue?logo=powershell)](https://docs.microsoft.com/en-us/powershell/)
@@ -6,7 +6,7 @@
 
 ## ✅ Description of installation process
 
-### Step 1: Prepare a Windows Server ISO for Automated Installation
+### 
 
 To create an automated installation, you need to modify the Windows Server ISO and include an unattended answer file.
 
