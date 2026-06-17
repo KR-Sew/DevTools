@@ -12,7 +12,7 @@
 
 - ⚙️ [`Change-SystemSID.ps1`](./Change-SystemSID.ps1)
 
-  - The script is adapted for `Copy` and `Paset` action or automation usage
+  - The script is adapted for `Copy` and `Paste` actions or automation usage
 
 ---
 
