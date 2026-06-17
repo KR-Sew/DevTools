@@ -4,9 +4,7 @@
 [![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue?logo=powershell)](https://docs.microsoft.com/en-us/powershell/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-## ✅ Several scripts that can be used in certain scenarios.
-
-Several scripts which can be used in some particular scenario
+## ✅ Several scripts that can be used in certain scenarios
 
 - ⚙️ [`Change-SIDCompletely.ps1`](./Change-SIDCompletely.ps1)
 
