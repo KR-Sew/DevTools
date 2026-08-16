@@ -39,3 +39,7 @@
       sudo chmod 755 /usr/local/sbin/update-3proxy
       sudo update-3proxy
     ```  
+
+---
+
+🔙 [back to Repos](https://github.com/KR-Sew?tab=repositories)
