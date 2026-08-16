@@ -15,7 +15,15 @@
   - Automatic installation script, that install **3proxy** as a service in: <p>
     [![Debian](https://img.shields.io/badge/Debian-607078?style=flat&logo=debian&logoColor=white&logoSize=auto&labelColor=a81d33)](https://www.debian.org/)
     [![Ubuntu](https://img.shields.io/badge/Ubuntu-607078?style=flat&logo=ubuntu&logoColor=white&logoSize=auto&labelColor=e95420)](https://ubuntu.com/download)</p>
+  - to run [`this`](./install_3proxy.sh) script
+    ```bash
+       chmod +x install-3proxy.sh
+       sudo ./install-3proxy.sh
+    ```
+    the generated config can be found here:
+    ```bash
+      /usr/local/3proxy/conf/3proxy.cfg
+    ```    
 - [**update_3proxy.sh**](./update_3proxy.sh)
   - Update script for existed **3proxy** service. It checks a new version on `GitHub`,<p> create  a backup and update.</p>
   - how to use [`this`](./update_3proxy.sh) script
-  
