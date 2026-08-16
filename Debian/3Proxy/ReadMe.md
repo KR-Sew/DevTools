@@ -17,3 +17,5 @@
     [![Ubuntu](https://img.shields.io/badge/Ubuntu-607078?style=flat&logo=ubuntu&logoColor=white&logoSize=auto&labelColor=e95420)](https://ubuntu.com/download)</p>
 - [**update_3proxy.sh**](./update_3proxy.sh)
   - Update script for existed **3proxy** service. It checks a new version on `GitHub`,<p> create  a backup and update.</p>
+  - how to use [`this`](./update_3proxy.sh) script
+  
