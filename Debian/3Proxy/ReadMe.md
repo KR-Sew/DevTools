@@ -61,6 +61,17 @@
       sudo ./uninstall_3proxy.sh --force
     ```
 
+### Run inside LXC/LXD container
+
+- It can be run without logging into the target system:
+  
+  ``` bash
+     lxc file push ./uninstall-3proxy.sh your_container_name/root/uninstall-3proxy.sh
+     lxc exec your_container_name -- chmod 755 /root/uninstall-3proxy.sh
+     lxc exec your_container_name -- /root/uninstall-3proxy.sh --force
+  ```
+
+  - where `your_container_name` is a name of your **LXC**/**LXD** container
 
 ---
 
