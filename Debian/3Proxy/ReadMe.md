@@ -39,3 +39,40 @@
       sudo chmod 755 /usr/local/sbin/update-3proxy
       sudo update-3proxy
     ```  
+
+- [**uninstall_3proxy.sh**](./uninstall_3proxy.sh)
+  - Unistalling scritp for existed **3proxy** service. That's the same actions as previous one.
+    - Just set the file executable and then run
+
+    ```bash
+       chmod +x unistall_3proxy.sh
+       sudo ./uninstall_3proxy.sh
+    ```
+
+    - It'll show what it found and require you to type:
+
+    ```bash
+       YES
+    ```
+
+    - Before removing anything. For unattended execution run:
+
+    ```bash
+      sudo ./uninstall_3proxy.sh --force
+    ```
+
+### Run inside LXC/LXD container
+
+- It can be run without logging into the target system:
+  
+  ``` bash
+     lxc file push ./uninstall-3proxy.sh your_container_name/root/uninstall-3proxy.sh
+     lxc exec your_container_name -- chmod 755 /root/uninstall-3proxy.sh
+     lxc exec your_container_name -- /root/uninstall-3proxy.sh --force
+  ```
+
+  - where `your_container_name` is a name of your **LXC**/**LXD** container
+
+---
+
+🔙 [back to Repos](https://github.com/KR-Sew?tab=repositories)
