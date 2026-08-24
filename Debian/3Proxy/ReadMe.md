@@ -40,6 +40,21 @@
       sudo update-3proxy
     ```  
 
+- [**uninstall_3proxy.sh**](./uninstall_3proxy.sh)
+  - Unistalling scritp for existed **3proxy** service. That's the same actions as previous one.
+    - Just set the file executable and then run
+
+    ```bash
+       chmod +x unistall_3proxy.sh
+       sudo ./uninstall_3proxy.sh
+    ```
+
+    - It'll show what it found and require you to type:
+
+    ```bash
+       YES
+    ```   
+
 ---
 
 🔙 [back to Repos](https://github.com/KR-Sew?tab=repositories)
