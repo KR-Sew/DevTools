@@ -11,8 +11,14 @@
 
 ### 🚀 Features
 
-- ✅ [Install or update Git and Gh CLI on Debian/Ubuntu](./install_git.sh)
-  - this script install or update Git and Git CLI to the latest version from source.
+- ✅ [Install or update **Git** and **Gh CLI** on **Debian**/**Ubuntu**](./install_git.sh)
+  - this script install or update `Git` and `Git CLI` to the latest version from source.
+  - In case of the **PC** where you intend to install or update it directly, just make this file executable and run this script locally with `sudo`
+
+  ```bash
+    chmod +x ./install_git.sh
+    sudo ./install_git.sh
+  ```
   
 ---
 
