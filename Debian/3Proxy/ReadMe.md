@@ -53,7 +53,14 @@
 
     ```bash
        YES
-    ```   
+    ```
+
+    - Before removing anything. For unattended execution run:
+
+    ```bash
+      sudo ./uninstall_3proxy.sh --force
+    ```
+
 
 ---
 
