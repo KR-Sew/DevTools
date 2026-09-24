@@ -1,4 +1,4 @@
-# Deploy <img src="../../Assets/pics/Minio_Logo_Black.svg" width="45" alt="MinIO"> qBittorrent in a <img src="../../Assets/pics/icons8-docker-48.svg" alt="Docker"> Docker conatainer
+# Deploy <img src="../../Assets/pics/Minio_Logo_Black.svg" width="45" alt="MinIO"> MinIO in a <img src="../../Assets/pics/icons8-docker-48.svg" alt="Docker"> Docker conatainer
 
 [![Debian](https://img.shields.io/badge/Debian-607078?style=flat&logo=debian&logoColor=white&logoSize=auto&labelColor=a81d33)](https://www.debian.org/)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-607078?style=flat&logo=ubuntu&logoColor=white&logoSize=auto&labelColor=e95420)](https://ubuntu.com/download)
@@ -9,7 +9,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Database Icon by icons8.com](https://img.shields.io/badge/Database%20Icon%20by%20icon8.com-54f2f2.svg?logo=vsc&logoColor=white)](https://icons8.com)
 
-There is the description how to deploy **MinIO** with **WebUI** in a **docker** conatainer that can save data files in a certain folder (volume) which is attached t the container.
+There is the description how to deploy private `S3` **object storage** **MinIO** with **WebUI** in a **docker** conatainer that can save data files in a certain folder (volume) which is attached t the container.
 
 ### 🚀 Features
 
