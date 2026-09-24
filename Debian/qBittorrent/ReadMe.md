@@ -8,14 +8,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Database Icon by icons8.com](https://img.shields.io/badge/Database%20Icon%20by%20icon8.com-54f2f2.svg?logo=vsc&logoColor=white)](https://icons8.com)
 
-There is the description how to install **qBittorrent** with **WebUI** in a `docker` conatainer that can be run in an **lxd VM** and save downloaded files in a folder which is attached using **NFS** from a folder that's located on another volume (in my case **zfs** pool)
+There is the description how to install **qBittorrent** with **WebUI** in a **docker** conatainer that can be run in an **LXD VM** and save downloaded files in a folder which is attached using **NFS** from the folder that's located on another volume (in my case **ZFS** pool)
 
 ### 🚀 Features
 
 - ✅ [Install, configure, and manage **Debian**](./Install/)
-- ✅ [Install, configure **Git**](./Git/)
-- ✅ [Install, configure and manage **DNS** services](./DNS/)
-- ✅ [Install, configure and update **3proxy** service](./3Proxy/)
 
 ---
 
