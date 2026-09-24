@@ -1,8 +1,8 @@
-# Deploy <img src="../../Assets/pics/Minio_Logo_Black.svg" width="45" alt="MinIO"> qBittorrent in a <img src="../../Assets/pics/icons8-docker-48.svg" alt="Docker"> Docker conatainer
+# Deploy <img src="../../Assets/pics/Postfix-logo.svg" width="55" alt="MinIO">Postfix in a <img src="../../Assets/pics/icons8-docker-48.svg" alt="Docker"> Docker conatainer
 
 [![Debian](https://img.shields.io/badge/Debian-607078?style=flat&logo=debian&logoColor=white&logoSize=auto&labelColor=a81d33)](https://www.debian.org/)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-607078?style=flat&logo=ubuntu&logoColor=white&logoSize=auto&labelColor=e95420)](https://ubuntu.com/download)
-[![MinIO](https://img.shields.io/badge/MinIO-C72E49?style=flat&logo=minio&logoColor=white)](https://min.io/)
+[![Postfix](https://img.shields.io/badge/Postfix-GitHub-2F6DB0?style=flat&logo=github&logoColor=white)](https://github.com/vdukhovni/postfix)
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)](https://hub.docker.com/)
 [![WSL](https://img.shields.io/badge/WSL-Microsoft-blue?style=flat&logo=linux&logoColor=white&logoSize=auto&labelColor=4E9A06)](https://learn.microsoft.com/en-us/windows/wsl/about)
 [![Bash](https://img.shields.io/badge/GNU%20Bash-4EAA25?style=flat&logo=gnubash&logoColor=white&logoSize=auto&labelColor=black)](https://www.gnu.org/software/bash/)
