@@ -1,6 +1,6 @@
-#   Installing and updating Git and GH CLI <img src="../../Assets/pics/101872_debian_512x512.png" width="35" alt="Debian">  Debian <img src="../../Assets/pics/icons8-ubuntu-96.png" width="35" alt="Debian"> Ubuntu from source.
+#   Installing and updating Git and GH CLI<img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.svg" width="35" alt="Git"> in <img src="../../Assets/pics/101872_debian_512x512.png" width="35" alt="Debian"><img src="../../Assets/pics/icons8-ubuntu-96.png" width="40" alt="Debian"> from source
 
-
+![Git](https://img.shields.io/badge/%20git%20-%23F05033.svg?style=flat&logo=git&logoColor=white&logoSize=auto&labelColor=23F05033)
 [![Debian](https://img.shields.io/badge/Debian-607078?style=flat&logo=debian&logoColor=white&logoSize=auto&labelColor=a81d33)](https://www.debian.org/)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-607078?style=flat&logo=ubuntu&logoColor=white&logoSize=auto&labelColor=e95420)](https://ubuntu.com/download)
 [![WSL](https://img.shields.io/badge/WSL-Microsoft-blue?style=flat&logo=linux&logoColor=white&logoSize=auto&labelColor=4E9A06)](https://learn.microsoft.com/en-us/windows/wsl/about)
