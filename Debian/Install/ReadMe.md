@@ -11,8 +11,6 @@
 ### 🚀 Features
 
 - ✅ [Install, configure, and manage Debian](./Install/)
-- ✅ [Install, configure Git](./Git/)
-- ✅ [Install, configure and manage DNS services](./DNS/)
 
 ---
 
