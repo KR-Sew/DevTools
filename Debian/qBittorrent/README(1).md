@@ -1,4 +1,4 @@
-# qBittorrent Docker + NFS
+# <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/qbittorrent.svg" width=35> qBittorrent <img src="../../Assets/pics/icons8-docker-48.svg" alt="Docker">Docker + NFS
 
 [![Debian](https://img.shields.io/badge/Debian-607078?style=flat&logo=debian&logoColor=white&logoSize=auto&labelColor=a81d33)](https://www.debian.org/)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-607078?style=flat&logo=ubuntu&logoColor=white&logoSize=auto&labelColor=e95420)](https://ubuntu.com/download)
