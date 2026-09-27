@@ -14,6 +14,8 @@
 - ✅ [Install, configure **Git**](./Git/)
 - ✅ [Install, configure and manage **DNS** services](./DNS/)
 - ✅ [Install, configure and update **3proxy** service](./3Proxy/)
+- ✅ [Install and configure **Virtualization host** services](./Virtualization/)
+  - How-To for building a **Debian 13** host that runs **Docker**, **LXD 5.21 LTS**, and **KVM/QEMU** with **libvirt** side-by-side.
 
 ---
 
