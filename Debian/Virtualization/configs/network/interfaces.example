@@ -1,0 +1,32 @@
+# /etc/network/interfaces
+# Replace interface names and addresses for your environment.
+
+source /etc/network/interfaces.d/*
+
+auto lo
+iface lo inet loopback
+
+# Physical management NIC: no IP here.
+allow-hotplug eno2
+iface eno2 inet manual
+
+# Physical guest/Lab NIC: no IP here.
+auto eno1
+allow-hotplug eno1
+iface eno1 inet manual
+
+# Management bridge.
+auto br0
+iface br0 inet static
+    address 10.100.100.251/24
+    gateway 10.100.100.254
+    bridge_ports eno2
+    bridge_stp off
+    bridge_fd 0
+
+# Guest bridge. External DHCP/router serves guests.
+auto br1
+iface br1 inet manual
+    bridge_ports eno1
+    bridge_stp off
+    bridge_fd 0
