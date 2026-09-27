@@ -9,7 +9,7 @@
 
 qBittorrent in Docker inside an LXD VM, with downloads stored outside the VM on a ZFS dataset exported over NFS and WebUI published through host NGINX.
 
-## Architecture
+## 🚀 Architecture
 
 ```text
 DebianNode (LXD host)
@@ -235,3 +235,7 @@ Torrent data can be managed independently through ZFS, for example:
 ```bash
 sudo zfs snapshot WD500G/torrents@manual-$(date +%Y%m%d)
 ```
+
+---
+
+🔙 [back to the **Repo**](./)
