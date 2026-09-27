@@ -1,5 +1,11 @@
 # 06 — LXD 5.21 LTS
 
+[![Debian](https://img.shields.io/badge/Debian-607078?style=flat&logo=debian&logoColor=white&logoSize=auto&labelColor=a81d33)](https://www.debian.org/)
+[![Ubuntu](https://img.shields.io/badge/Ubuntu-607078?style=flat&logo=ubuntu&logoColor=white&logoSize=auto&labelColor=e95420)](https://ubuntu.com/download)
+[![Bash](https://img.shields.io/badge/GNU%20Bash-4EAA25?style=flat&logo=gnubash&logoColor=white&logoSize=auto&labelColor=black)](https://www.gnu.org/software/bash/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Database Icon by icons8.com](https://img.shields.io/badge/Database%20Icon%20by%20icon8.com-54f2f2.svg?logo=vsc&logoColor=white)](https://icons8.com)
+
 The reference build moved from Debian's older LXD package to Canonical's LXD 5.21 LTS snap.
 
 ## Install snapd and LXD
@@ -108,3 +114,7 @@ lxc delete deb13-test --force
 ```
 
 Cached image volumes may remain; that is normal.
+
+---
+
+🔙 [back to the **Repo**](../)
