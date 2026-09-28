@@ -81,7 +81,11 @@ Then connect Remote Viewer to:
 spice://127.0.0.1:5900
 ```
 
-It could be looked like:
+<img src="../../../Assets/pics/deb_virsh/Screenshot 2026-09-28 221855.png">
+
+<img src="../../../Assets/pics/deb_virsh/Screenshot 2026-09-28 222021.png">
+
+If you connect to several `VMs` it looks like:
 
 <img src="../../../Assets/pics/deb_virsh/Screenshot 2026-09-28 224738.png" width=100%>
 
