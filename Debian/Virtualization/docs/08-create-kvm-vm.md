@@ -56,6 +56,18 @@ virt-install \
   --osinfo detect=on,name=linux2024
 ```
 
+For the script [`create-kvm-vm.sh`](../scripts/create-kvm-vm.sh) it looks like:
+```bash
+sudo ./create-kvm-vm.sh \
+    --name deb13-test \
+    --os debian13 \
+    --cpu 4 \
+    --memory 4096 \
+    --disk 30G \
+    --bridge br1 \
+    --iso deb13-netinstall.iso
+```
+
 Use the actual OS-info identifier available on your host.
 
 ## Remote SPICE over SSH
@@ -66,17 +78,36 @@ From a workstation:
 ssh -N -L 5900:127.0.0.1:5900 user@HOST
 ```
 
+- If you want to connect serveral vm you can run the next command:
+
+  ```bash
+     ssh -N `
+        -L 5900:127.0.0.1:5900 `
+        -L 5901:127.0.0.1:5901 `
+      user_login@hostname_or_ip-address   
+  ```
+
 Then connect Remote Viewer to:
 
 ```text
 spice://127.0.0.1:5900
 ```
 
+<img src="../../../Assets/pics/deb_virsh/Screenshot 2026-09-28 221855.png">
+
+<img src="../../../Assets/pics/deb_virsh/Screenshot 2026-09-28 222021.png">
+
+If you connect to several `VMs` it looks like:
+
+<img src="../../../Assets/pics/deb_virsh/Screenshot 2026-09-28 224738.png" width=100%>
+
 Check the actual port first:
 
 ```bash
 virsh domdisplay deb13-kvm
 ```
+
+<img src="../../../Assets/pics/deb_virsh/Screenshot 2026-09-28 221614.png">
 
 ## After installation
 
