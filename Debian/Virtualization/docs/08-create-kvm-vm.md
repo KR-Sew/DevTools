@@ -81,11 +81,17 @@ Then connect Remote Viewer to:
 spice://127.0.0.1:5900
 ```
 
+It could be looked like:
+
+<img src="../../../Assets/pics/deb_virsh/Screenshot 2026-09-28 224738.png" width=100%>
+
 Check the actual port first:
 
 ```bash
 virsh domdisplay deb13-kvm
 ```
+
+<img src="../../../Assets/pics/deb_virsh/Screenshot 2026-09-28 221614.png">
 
 ## After installation
 
