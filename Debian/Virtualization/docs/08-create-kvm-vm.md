@@ -56,6 +56,18 @@ virt-install \
   --osinfo detect=on,name=linux2024
 ```
 
+For the script [`create-kvm-vm.sh`](../scripts/create-kvm-vm.sh) it looks like:
+```bash
+sudo ./create-kvm-vm.sh \
+    --name deb13-test \
+    --os debian13 \
+    --cpu 4 \
+    --memory 4096 \
+    --disk 30G \
+    --bridge br1 \
+    --iso deb13-netinstall.iso
+```
+
 Use the actual OS-info identifier available on your host.
 
 ## Remote SPICE over SSH
