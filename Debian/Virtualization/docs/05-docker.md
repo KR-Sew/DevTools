@@ -56,4 +56,7 @@ docker rm -f log-test
 
 ---
 
+[Next 🔜`06-lxd`](./06-lxd.md)
+
+---
 🔙 [back to the **Repo**](../)
