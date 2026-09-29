@@ -70,4 +70,7 @@ Modern guests use q35 + UEFI/OVMF in this guide.
 
 ---
 
+[Next 🔜`08-create-kvm-vm`](./08-create-kvm-vm.md)
+
+---
 🔙 [back to the **Repo**](../)
