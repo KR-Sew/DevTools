@@ -52,4 +52,7 @@ The physical port behind `eno1` must be in the correct upstream bridge/VLAN. Dur
 
 ---
 
+[Next 🔜`04-dns`](./04-dns.md)
+
+---
 🔙 [back to the **Repo**](../)

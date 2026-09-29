@@ -74,4 +74,7 @@ Then validate again after a physical reboot.
 
 ---
 
+[Next 🔜`03-networking`](./03-networking.md)
+
+---
 🔙 [back to the **Repo**](../)

@@ -57,6 +57,7 @@ virt-install \
 ```
 
 For the script [`create-kvm-vm.sh`](../scripts/create-kvm-vm.sh) it looks like:
+
 ```bash
 sudo ./create-kvm-vm.sh \
     --name deb13-test \
@@ -162,4 +163,7 @@ virsh dominfo deb13-kvm | grep -E 'State|Autostart'
 
 ---
 
+[Next 🔜`09-validation`](./09-validation.md)
+
+---
 🔙 [back to the **Repo**](../)

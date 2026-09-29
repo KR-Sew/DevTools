@@ -39,4 +39,8 @@ The tested Intel host reported VT-x and loaded `kvm_intel` + `kvm`.
 
 ---
 
+[Next 🔜`02-storage`](02-storage.md)
+
+---
+
 🔙 [back to the **Repo**](../)
