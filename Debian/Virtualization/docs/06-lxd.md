@@ -117,4 +117,7 @@ Cached image volumes may remain; that is normal.
 
 ---
 
+[Next 🔜`07-kvm-libvirt`](./07-kvm-libvirt.md)
+
+---
 🔙 [back to the **Repo**](../)
