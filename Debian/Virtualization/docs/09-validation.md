@@ -61,4 +61,7 @@ sudo ./scripts/check-host.sh
 
 ---
 
+[Next 🔜`troubleshooting`](./troubleshooting.md)
+
+---
 🔙 [back to the **Repo**](../)
