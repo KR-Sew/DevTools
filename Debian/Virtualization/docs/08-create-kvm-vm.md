@@ -162,4 +162,7 @@ virsh dominfo deb13-kvm | grep -E 'State|Autostart'
 
 ---
 
+[Next 🔜`09-validation`](./09-validation.md)
+
+---
 🔙 [back to the **Repo**](../)
