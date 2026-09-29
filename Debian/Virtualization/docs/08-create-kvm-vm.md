@@ -57,6 +57,7 @@ virt-install \
 ```
 
 For the script [`create-kvm-vm.sh`](../scripts/create-kvm-vm.sh) it looks like:
+
 ```bash
 sudo ./create-kvm-vm.sh \
     --name deb13-test \
