@@ -72,6 +72,8 @@ Use the actual OS-info identifier available on your host.
 
 ## Remote SPICE over SSH
 
+Remote Viewer can be downloaded on [`this link`](https://virt-manager.org/download)
+
 From a workstation:
 
 ```powershell
