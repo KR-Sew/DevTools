@@ -1,13 +1,13 @@
 # MinIO S3 API
 server {
-    listen your_ip_here:80;
+    listen your_ip_address_here:80;
     server_name s3.your_domain_name.com;
 
     return 301 https://$host$request_uri;
 }
 
 server {
-    listen your_ip_here:443 ssl http2;
+    listen your_ip_address_here:443 ssl http2;
     server_name your_domain_name.com;
 
     ssl_certificate /etc/letsencrypt/live/s3.your_domain_name.com/fullchain.pem;
