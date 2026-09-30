@@ -48,6 +48,8 @@ MinIO ports 9000/9001 are deliberately published only on `127.0.0.1`. NGINX is t
 ## 1. Prepare storage
 
 ```bash
+# The files can be placed in any directory, as long as the application can access them
+# In my case `/mnt/` is the project volume so I put them there
 sudo mkdir -p /mnt/hgsd1/minio/data
 findmnt /mnt/hgsd1
 df -hT /mnt/hgsd1
