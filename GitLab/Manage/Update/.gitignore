@@ -1,0 +1,8 @@
+.env
+*.dump
+*.tar
+*.tar.gz
+*.log
+docker-compose.resolved.yml
+docker-compose.yml.pre-*
+backup/
