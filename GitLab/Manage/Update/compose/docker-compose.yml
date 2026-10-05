@@ -1,0 +1,72 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: gitlab_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - /mnt/hgsc1/dbdata/postgres:/var/lib/postgresql/data
+      - ./init-gitlab-db.sql:/docker-entrypoint-initdb.d/init-gitlab-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+    networks:
+      - gitlab-net
+
+  gitlab:
+    image: gitlab/gitlab-ce:19.2.7-ce.0
+    container_name: gitlab
+    restart: always
+    hostname: gitlab.odobreno.ru
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url '${GITLAB_EXTERNAL_URL}'
+        postgresql['enable'] = false
+        gitlab_rails['db_adapter'] = 'postgresql'
+        gitlab_rails['db_encoding'] = 'unicode'
+        gitlab_rails['db_host'] = '${GITLAB_DB_HOST}'
+        gitlab_rails['db_port'] = ${GITLAB_DB_PORT}
+        gitlab_rails['db_database'] = '${POSTGRES_DB}'
+        gitlab_rails['db_username'] = '${GITLAB_DB_USERNAME}'
+        gitlab_rails['db_password'] = '${GITLAB_DB_PASSWORD}'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2222
+
+        gitlab_rails['smtp_enable'] = true
+        gitlab_rails['smtp_address'] = "${SMTP_ADDRESS}"
+        gitlab_rails['smtp_port'] = ${SMTP_PORT}
+        gitlab_rails['smtp_user_name'] = "${SMTP_USER}"
+        gitlab_rails['smtp_password'] = "${SMTP_PASS}"
+        gitlab_rails['smtp_domain'] = "${SMTP_DOMAIN}"
+        gitlab_rails['smtp_authentication'] = "login"
+        gitlab_rails['smtp_enable_starttls_auto'] = false
+        gitlab_rails['smtp_tls'] = true
+        gitlab_rails['gitlab_email_from'] = "${SMTP_USER}"
+        gitlab_rails['gitlab_email_reply_to'] = "${SMTP_USER}"
+
+        gitlab_rails['git_max_size'] = '6000m'
+        gitlab_rails['receive_max_input_size'] = '6000m'
+        nginx['client_max_body_size'] = '6000m'
+    ports:
+      - "2222:22"
+    expose:
+      - "80"
+      - "443"
+    volumes:
+      - /mnt/hgsc1/projects/gitlab/config:/etc/gitlab
+      - /mnt/hgsc1/projects/gitlab/logs:/var/log/gitlab
+      - /mnt/hgsc1/projects/gitlab/data:/var/opt/gitlab
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - gitlab-net
+
+networks:
+  gitlab-net:
+    driver: bridge
