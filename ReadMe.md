@@ -20,9 +20,11 @@
 ### 🚀 Available DevOps Tools
 
 - 📊 [SonarQube](./SonarQube/) – Scripts for installing, configuring, and automating SonarQube for code quality and security analysis.
-- 📦 [GitLab](./GitLab/) – Scripts for managing GitLab installations, CI/CD pipelines, user roles, and backups.
-- 📦 [Windows Automation](./WinAutomation/) - managing Windows installation process and other things.
-- 📦 [Debian Automation](./Debian/) - installing and managing Debian/Ubuntu
+- 📡 [Prometheus](./Prometheus/) – Scripts for deploying and managing Prometheus monitoring, exporters, and alerting configurations.
+- ⚙️ [Jenkins](./Jenkins/) – Automation scripts for installing, configuring, and managing Jenkins jobs, plugins, and pipelines.
+- 📦 [GitLab](./GitLab/ReadMe.md) – Scripts for managing GitLab installations, CI/CD pipelines, user roles, and backups.
+- 📦 [Windows Automation](./WinAutomation/ReadMe.md) - managing Windows installation process and other things.
+- 📦 [Debian Automation](./Debian/ReadMe.md) - installing and managing Debian/Ubuntu
 
 ---
 

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+mkdir -p /var/lib/proxy-template
+
+if [[ ! -s /etc/machine-id ]]; then
+    systemd-machine-id-setup
+fi
+
+if command -v ssh-keygen >/dev/null 2>&1; then
+    ssh-keygen -A
+fi
+
+touch /var/lib/proxy-template/initialized
+logger -t proxy-firstboot "Unique machine identity initialized."

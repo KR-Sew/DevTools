@@ -83,7 +83,7 @@ From a workstation:
 ssh -N -L 5900:127.0.0.1:5900 user@HOST
 ```
 
-- If you want to connect serveral vm you can run the next command:
+- If you want to connect serveral `VMs` you can run the next command:
 
   ```bash
      ssh -N `
