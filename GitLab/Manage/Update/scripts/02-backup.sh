@@ -4,6 +4,11 @@ umask 077
 
 trap 'rc=$?; echo "[FAIL] line $LINENO: $BASH_COMMAND (exit $rc)" >&2' ERR
 
+SCRIPT_DIR="$(
+    cd -- "$(dirname -- "${BASH_SOURCE[0]}")" >/dev/null 2>&1
+    pwd -P
+)"
+
 COMPOSE_DIR="${COMPOSE_DIR:-/mnt/hgsc1/projects/gitlab}"
 BACKUP_ROOT="${BACKUP_ROOT:-/mnt/hgsd1/backups/postres_gitlab}"
 GITLAB_CONTAINER="${GITLAB_CONTAINER:-gitlab}"
