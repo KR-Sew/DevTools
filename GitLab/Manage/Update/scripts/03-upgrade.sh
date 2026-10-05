@@ -3,6 +3,12 @@ set -Eeuo pipefail
 
 trap 'rc=$?; echo "[FAIL] line $LINENO: $BASH_COMMAND (exit $rc)" >&2' ERR
 
+# Resolve the directory where this script itself is located.
+SCRIPT_DIR="$(
+    cd -- "$(dirname -- "${BASH_SOURCE[0]}")" >/dev/null 2>&1
+    pwd -P
+)"
+
 COMPOSE_DIR="${COMPOSE_DIR:-/mnt/hgsc1/projects/gitlab}"
 GITLAB_CONTAINER="${GITLAB_CONTAINER:-gitlab}"
 
@@ -25,7 +31,7 @@ echo "Current: $CURRENT"
 echo "Target : gitlab/gitlab-ce:$TARGET"
 echo
 
-./scripts/01-preflight.sh
+"$SCRIPT_DIR/01-preflight.sh"
 
 echo
 echo "[INFO] Updating pinned GitLab image in docker-compose.yml..."
