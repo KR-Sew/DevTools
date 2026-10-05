@@ -9,6 +9,13 @@ This repository provides GitLab automation scripts to help DevOps engineers and 
 
 ## 🚀 Features
 
+- 📂 [**`Update`**](./Update/)
+  - **"How to"** the guide how to update **GitLab** `18` up to the latest version
+  - Consists of several folders:
+    - `compose` - there are some **docker compose** files
+    - `docs` - the description in **ReadMe**.md files
+    - `scripts` - several useful scripts to assist the update process
+
 ---
 
 🔙 [back to 📂 GitLab](../)
