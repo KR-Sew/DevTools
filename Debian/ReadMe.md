@@ -19,6 +19,8 @@
   - How-To for building a **Debian 13** host that runs **Docker**, **LXD 5.21 LTS**, and **KVM/QEMU** with **libvirt** side-by-side.
 - ✅ [Install, configure **qBittorrent**](./qBittorrent/ReadMe.md)
   - How-to for running **qBittorrent** client in a docker container and keep downloaded files in a volume using **NFS**
+- ✅ [Install, configure **MinIO**](./MinIO/ReadMe.md)
+  - How-to for running **MinIO** small private `S3` cloud storage in a docker container.
 
 ---
 
