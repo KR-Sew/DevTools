@@ -44,7 +44,7 @@ docker compose ps
 
 echo
 info "WebUI: http://127.0.0.1:${WEBUI_HOST_PORT}"
-info "Public URL after NGINX setup: https://torrents.lightcyber.ru"
+info "Public URL after NGINX setup: https://torrents.domain_name.com"
 info "Initial username: admin"
 sleep 2
 PASSWORD_LINE=$(docker logs qbittorrent 2>&1 | grep -iE 'temporary password|administrator password' | tail -1 || true)
