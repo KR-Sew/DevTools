@@ -1,0 +1,13 @@
+[Unit]
+Description=Reverse Proxy First Boot Initialization
+ConditionPathExists=!/var/lib/proxy-template/initialized
+After=local-fs.target
+Before=ssh.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/proxy-firstboot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

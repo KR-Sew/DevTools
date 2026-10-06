@@ -1,0 +1,36 @@
+# /etc/nginx/sites-available/example.com.conf
+
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      close;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name example.com;
+
+    include snippets/letsencrypt.conf;
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+
+    server_name example.com;
+
+    ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+
+    include snippets/security-headers.conf;
+
+    location / {
+        include snippets/proxy-common.conf;
+        proxy_pass http://10.10.10.15:8080;
+    }
+}
