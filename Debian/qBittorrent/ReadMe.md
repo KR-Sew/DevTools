@@ -27,7 +27,7 @@ vm1 (10.10.205.100)
 └── NGINX :443 -> 127.0.0.1:18080 -> qbittorrent:8080
 ```
 
-Host/LXD bridge: `10.10.205.253/24` (`lxdbr0-vm`). LXD 5.21.7 LTS. Public WebUI: `https://torrents.lightcyber.ru`.
+Host/LXD bridge: `10.10.205.253/24` (`lxdbr0-vm`). LXD 5.21.7 LTS. Public WebUI: `https://torrents.domain_name.com`.
 
 ## 1. NFS server on DebianNode
 
@@ -100,7 +100,7 @@ The WebUI uses host port `18080` because `8080` is already occupied by OnlyOffic
 
 ## 4. NGINX
 
-Copy/adapt `nginx/torrents.lightcyber.ru.conf` into the configuration included by your NGINX installation. This host uses source-installed NGINX with main config at `/usr/local/nginx/conf/nginx.conf`.
+Copy/adapt `nginx/torrents.domain_name.com.conf` into the configuration included by your NGINX installation. This host uses source-installed NGINX with main config at `/usr/local/nginx/conf/nginx.conf`.
 
 Test and reload:
 
@@ -112,7 +112,7 @@ Test locally and through HTTPS:
 
 ```bash
 curl -I http://127.0.0.1:18080/
-curl -Ik https://torrents.lightcyber.ru/
+curl -Ik https://torrents.domain_name.com/
 ```
 
 ## 5. Initial login
