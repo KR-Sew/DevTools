@@ -9,11 +9,16 @@
 ### 🚀 Features
 
 - ✅ [Install, configure, and manage **Debian**](./Install/)
-- ✅ [Install, configure **Git**](./Git/)
-- ✅ [Install, configure and manage **DNS** services](./DNS/)
+- ✅ [Install, configure **Git**](./Git/ReadMe.md)
+  - There is the script that's installing or updating to the latest version of **Git** and **Git CLI**
+- ✅ [Install, configure and manage **DNS** services](./DNS/ReadMe.md)
+  - Run your own **DNS** service like **Knot-DNS**, **Unbound** or **DNSDist**
 - ✅ [Install, configure and update **3proxy** service](./3Proxy/)
+  - Small and faster proxy server that can run in the LXC Debian based container.
 - ✅ [Install and configure **Virtualization host** services](./Virtualization/)
   - How-To for building a **Debian 13** host that runs **Docker**, **LXD 5.21 LTS**, and **KVM/QEMU** with **libvirt** side-by-side.
+- ✅ [Install, configure **qBittorrent**](./qBittorrent/ReadMe.md)
+  - How-to for running **qBittorrent** client in a docker container and keep downloaded files in a volume using **NFS**
 
 ---
 
