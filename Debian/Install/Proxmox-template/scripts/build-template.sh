@@ -7,7 +7,7 @@ set -Eeuo pipefail
 # ==============================================================================
 
 TEMPLATE_ID="${TEMPLATE_ID:-9001}"
-HOSTNAME="${HOSTNAME:-debian13-nginx-template}"
+CT_HOSTNAME="${CT_HOSTNAME:-debian13-nginx-template}"
 STORAGE="${STORAGE:-local-zfs}"
 BRIDGE="${BRIDGE:-vmbr0}"
 CORES="${CORES:-2}"
