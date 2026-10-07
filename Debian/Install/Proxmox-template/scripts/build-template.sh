@@ -75,9 +75,36 @@ info "Waiting for container boot..."
 sleep 4
 
 info "Copying repository into the build container..."
-pct exec "$TEMPLATE_ID" -- mkdir -p /opt/proxmox-debian13-nginx
-tar -C "$REPO_DIR" --exclude='.git' -cf - . | pct exec "$TEMPLATE_ID" -- tar -C /opt/proxmox-debian13-nginx -xf -
 
+BUILD_ARCHIVE="/tmp/proxmox-debian13-nginx-${TEMPLATE_ID}.tar"
+
+rm -f "$BUILD_ARCHIVE"
+
+tar \
+    -C "$REPO_DIR" \
+    --exclude='.git' \
+    -cf "$BUILD_ARCHIVE" \
+    .
+
+pct exec "$TEMPLATE_ID" -- \
+    mkdir -p /opt/proxmox-debian13-nginx
+
+pct push \
+    "$TEMPLATE_ID" \
+    "$BUILD_ARCHIVE" \
+    /tmp/proxmox-debian13-nginx.tar
+
+pct exec "$TEMPLATE_ID" -- \
+    tar \
+        -C /opt/proxmox-debian13-nginx \
+        -xf /tmp/proxmox-debian13-nginx.tar
+
+pct exec "$TEMPLATE_ID" -- \
+    rm -f /tmp/proxmox-debian13-nginx.tar
+
+rm -f "$BUILD_ARCHIVE"
+
+ok "Repository copied into build container."
 run_ct() {
   info "Running $1..."
   pct exec "$TEMPLATE_ID" -- bash "/opt/proxmox-debian13-nginx/scripts/$1" /opt/proxmox-debian13-nginx
