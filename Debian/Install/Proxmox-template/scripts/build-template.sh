@@ -8,7 +8,7 @@ set -Eeuo pipefail
 
 TEMPLATE_ID="${TEMPLATE_ID:-9001}"
 HOSTNAME="${HOSTNAME:-debian13-nginx-template}"
-STORAGE="${STORAGE:-local-lvm}"
+STORAGE="${STORAGE:-local-zfs}"
 BRIDGE="${BRIDGE:-vmbr0}"
 CORES="${CORES:-2}"
 MEMORY="${MEMORY:-1024}"
@@ -63,7 +63,7 @@ CREATE_ARGS=(
   --rootfs "${STORAGE}:${DISK_GB}"
   --net0 "name=eth0,bridge=${BRIDGE},ip=dhcp,type=veth,firewall=1"
   --onboot 0
-  --features ""
+  --features "nesting=1"
   --start 1
 )
 if [[ -n "$ROOT_PASSWORD" ]]; then
@@ -93,6 +93,26 @@ run_ct 80-install-proxy-check.sh
 
 info "Validating NGINX..."
 pct exec "$TEMPLATE_ID" -- nginx -t
+
+info "Checking systemd health..."
+
+SYSTEM_STATE="$(
+    pct exec "$TEMPLATE_ID" -- \
+        systemctl is-system-running 2>/dev/null ||
+    true
+)"
+
+if [[ "$SYSTEM_STATE" == "running" ]]; then
+    ok "systemd state: running"
+else
+    warn "systemd state: $SYSTEM_STATE"
+
+    pct exec "$TEMPLATE_ID" -- \
+        systemctl --failed \
+        --no-pager || true
+
+    die "Container systemd is not healthy."
+fi
 
 info "Running template cleanup..."
 run_ct 90-cleanup-template.sh
