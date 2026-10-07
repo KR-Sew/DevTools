@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-API_URL="${API_URL:-https://s3.your_domaine.name}"
-CONSOLE_URL="${CONSOLE_URL:-https://s3-console.your_domain.name}"
+API_URL="${API_URL:-https://s3.storage.net}"
+CONSOLE_URL="${CONSOLE_URL:-https://s3-console.storage.net}"
 
 ok()   { printf '\033[1;32m[ OK ]\033[0m %s\n' "$*"; }
 info() { printf '\033[1;34m[INFO]\033[0m %s\n' "$*"; }
