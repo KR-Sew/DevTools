@@ -74,7 +74,7 @@ TEMPLATE_PATH="${TEMPLATE_STORAGE}:vztmpl/${TEMPLATE}"
 info "Creating unprivileged LXC CT $TEMPLATE_ID..."
 CREATE_ARGS=(
   "$TEMPLATE_ID" "$TEMPLATE_PATH"
-  --hostname "$HOSTNAME"
+  --hostname "$CT_HOSTNAME"
   --unprivileged 1
   --cores "$CORES"
   --memory "$MEMORY"
