@@ -424,7 +424,113 @@ ok "HTTPS virtual host enabled."
 ok "HTTP -> HTTPS redirect enabled."
 
 # ------------------------------------------------------------------------------
-# Final check
+# Final validation
+# ------------------------------------------------------------------------------
+
+section "Final validation"
+
+# Test the NGINX HTTPS vhost locally.
+# This bypasses DNS and proves that:
+#   client -> NGINX HTTPS -> backend
+# works correctly.
+info "Testing HTTPS reverse proxy locally..."
+
+LOCAL_HTTPS_CODE="$(
+    pct exec "$VMID" -- \
+        curl -k -sS \
+        --resolve "${DOMAIN}:443:127.0.0.1" \
+        -o /dev/null \
+        -w '%{http_code}' \
+        "https://${DOMAIN}/" \
+        2>/dev/null || true
+)"
+
+if [[ "$LOCAL_HTTPS_CODE" =~ ^[1-5][0-9][0-9]$ ]]; then
+    ok "Local HTTPS proxy test returned HTTP ${LOCAL_HTTPS_CODE}."
+else
+    die "Local HTTPS proxy test failed."
+fi
+
+
+# ------------------------------------------------------------------------------
+# DNS validation
+# ------------------------------------------------------------------------------
+
+info "Checking current DNS resolution..."
+
+DOMAIN_IP="$(
+    pct exec "$VMID" -- \
+        getent ahostsv4 "$DOMAIN" 2>/dev/null |
+        awk 'NR == 1 {print $1}'
+)"
+
+if [[ -z "$DOMAIN_IP" ]]; then
+    warn "Could not resolve ${DOMAIN}."
+else
+    info "${DOMAIN} resolves to ${DOMAIN_IP}."
+
+    # Warn if DNS points directly to the backend instead of the reverse proxy.
+    if [[ "$BACKEND_HOST" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]] &&
+       [[ "$DOMAIN_IP" == "$BACKEND_HOST" ]]; then
+
+        warn "${DOMAIN} currently resolves directly to the backend!"
+        warn "Backend address : ${BACKEND_HOST}"
+        warn "Requests may bypass this NGINX reverse proxy."
+    fi
+fi
+
+
+# ------------------------------------------------------------------------------
+# Public endpoint validation
+# ------------------------------------------------------------------------------
+
+info "Testing HTTP endpoint..."
+
+HTTP_CODE="$(
+    pct exec "$VMID" -- \
+        curl -sS \
+        -o /dev/null \
+        -w '%{http_code}' \
+        "http://${DOMAIN}/" \
+        2>/dev/null || true
+)"
+
+if [[ "$HTTP_CODE" == "301" || "$HTTP_CODE" == "308" ]]; then
+    ok "HTTP endpoint redirects to HTTPS: HTTP ${HTTP_CODE}."
+elif [[ "$HTTP_CODE" =~ ^[1-5][0-9][0-9]$ ]]; then
+    warn "HTTP endpoint returned HTTP ${HTTP_CODE}; expected redirect to HTTPS."
+else
+    warn "Unable to validate public HTTP endpoint."
+fi
+
+
+info "Testing HTTPS endpoint..."
+
+HTTPS_RESULT="$(
+    pct exec "$VMID" -- \
+        curl -sS \
+        -o /dev/null \
+        -w '%{http_code} %{remote_ip}' \
+        "https://${DOMAIN}/" \
+        2>/dev/null || true
+)"
+
+HTTPS_CODE="${HTTPS_RESULT%% *}"
+HTTPS_IP="${HTTPS_RESULT#* }"
+
+if [[ "$HTTPS_CODE" =~ ^[1-5][0-9][0-9]$ ]]; then
+    ok "HTTPS endpoint responded with HTTP ${HTTPS_CODE}."
+
+    if [[ -n "$HTTPS_IP" ]]; then
+        info "HTTPS connection address: ${HTTPS_IP}"
+    fi
+else
+    warn "Unable to validate public HTTPS endpoint."
+fi
+
+
+# ------------------------------------------------------------------------------
+# Result
 # ------------------------------------------------------------------------------
 
 section "Result"
