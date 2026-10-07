@@ -1,6 +1,0 @@
-*.swp
-*.tmp
-.env
-secrets/
-certs/
-private/
