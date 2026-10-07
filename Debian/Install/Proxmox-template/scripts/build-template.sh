@@ -24,6 +24,25 @@ ok(){ echo -e "${GREEN}[ OK ]${NC} $*"; }
 warn(){ echo -e "${YELLOW}[WARN]${NC} $*"; }
 die(){ echo -e "${RED}[FAIL]${NC} $*" >&2; exit 1; }
 
+on_error() {
+    local exit_code=$?
+    local line_no="${BASH_LINENO[0]:-unknown}"
+
+    echo
+    fail "Build failed at line ${line_no} (exit ${exit_code})."
+
+    if pct status "$TEMPLATE_ID" &>/dev/null; then
+        warn "Build container CT ${TEMPLATE_ID} has been left intact for debugging."
+        warn "Status: $(pct status "$TEMPLATE_ID" | awk '{print $2}')"
+        warn "Enter it with: pct enter ${TEMPLATE_ID}"
+    fi
+
+    exit "$exit_code"
+}
+
+trap on_error ERR
+
+
 [[ $EUID -eq 0 ]] || die "Run as root on a Proxmox node."
 command -v pct >/dev/null || die "pct not found. Run this on Proxmox VE."
 command -v pveam >/dev/null || die "pveam not found."
