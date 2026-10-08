@@ -7,7 +7,7 @@
 
 ## Recommended
 
-- Keep the LXC unprivileged.
+- Keep the `LXC` unprivileged.
 - Do not enable nesting unless a concrete requirement appears.
 - Keep Proxmox VE and Debian patched.
 - Restrict SSH to management networks.
