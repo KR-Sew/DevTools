@@ -9,16 +9,16 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 ---
-A small production-style MinIO deployment for the `odobreno.ru` dedicated Debian server.
+A small production-style MinIO deployment for the `storage.net` dedicated Debian server.
 
 ## Layout
 
 ```text
 Internet
    |
-   +-- https://s3.odobreno.ru --------> NGINX --> 127.0.0.1:9000 --> MinIO S3 API
+   +-- https://s3.storage.net --------> NGINX --> 127.0.0.1:9000 --> MinIO S3 API
    |
-   +-- https://s3-console.odobreno.ru -> NGINX --> 127.0.0.1:9001 --> MinIO Console
+   +-- https://s3-console.storage.net -> NGINX --> 127.0.0.1:9001 --> MinIO Console
                                                             |
                                                             +--> /data
                                                                  |
@@ -118,15 +118,15 @@ Expected listeners:
 ## 4. DNS
 
 ```text
-s3.odobreno.ru          A  5.35.7.237
-s3-console.odobreno.ru  A  5.35.7.237
+s3.storage.net          A  5.35.8.238
+s3-console.storage.net  A  5.35.8.238
 ```
 
 Verify:
 
 ```bash
-dig +short A s3.odobreno.ru
-dig +short A s3-console.odobreno.ru
+dig +short A s3.storage.net
+dig +short A s3-console.storage.net
 ```
 
 ## 5. NGINX
@@ -162,21 +162,21 @@ sudo certbot renew --dry-run
 ## 6. Public tests
 
 ```bash
-curl -I http://s3.odobreno.ru
-curl -i https://s3.odobreno.ru/minio/health/live
+curl -I http://s3.storage.net
+curl -i https://s3.storage.net/minio/health/live
 
-curl -I http://s3-console.odobreno.ru
-curl -I https://s3-console.odobreno.ru
+curl -I http://s3-console.storage.net
+curl -I https://s3-console.storage.net
 ```
 
 Certificate SAN check:
 
 ```bash
-openssl s_client   -connect s3.odobreno.ru:443   -servername s3.odobreno.ru </dev/null 2>/dev/null |
+openssl s_client   -connect s3.storage.net:443   -servername s3.storage.net </dev/null 2>/dev/null |
 openssl x509 -noout -subject -issuer -dates -ext subjectAltName
 ```
 
-The SAN must contain both `s3.odobreno.ru` and `s3-console.odobreno.ru`.
+The SAN must contain both `s3.storage.net` and `s3-console.storage.net`.
 
 ## 7. Install MinIO Client
 
@@ -196,7 +196,7 @@ Read the active credentials from the running container:
 MINIO_USER="$(docker exec minio printenv MINIO_ROOT_USER)"
 MINIO_PASS="$(docker exec minio printenv MINIO_ROOT_PASSWORD)"
 
-mc alias set odobreno   https://s3.odobreno.ru   "$MINIO_USER"   "$MINIO_PASS"
+mc alias set odobreno   https://s3.storage.net   "$MINIO_USER"   "$MINIO_PASS"
 
 unset MINIO_USER MINIO_PASS
 ```
@@ -204,7 +204,7 @@ unset MINIO_USER MINIO_PASS
 Check:
 
 ```bash
-mc admin info odobreno
+mc admin info storage
 ```
 
 `~/.mc/config.json` contains credentials and should remain mode `600`.
@@ -212,17 +212,17 @@ mc admin info odobreno
 ## 9. Create the primary bucket
 
 ```bash
-mc mb odobreno/odobreno-storage
-mc ls odobreno
+mc mb storage/storage-store
+mc ls storage
 ```
 
 ## 10. Create a restricted S3 user
 
 ```bash
-S3_USER="odobreno-s3"
+S3_USER="storage-s3"
 S3_SECRET="$(openssl rand -base64 32)"
 
-mc admin user add odobreno "$S3_USER" "$S3_SECRET"
+mc admin user add storage "$S3_USER" "$S3_SECRET"
 ```
 
 Store the generated secret securely before unsetting it.
@@ -230,15 +230,15 @@ Store the generated secret securely before unsetting it.
 Create and attach the included bucket-scoped policy:
 
 ```bash
-mc admin policy create   odobreno   odobreno-storage-rw   policies/odobreno-storage-rw.json
+mc admin policy create   storage   storage-store-rw   policies/storage-store-rw.json
 
-mc admin policy attach   odobreno   odobreno-storage-rw   --user odobreno-s3
+mc admin policy attach   storage   storage-store-rw   --user storage-s3
 ```
 
 Create a restricted client alias:
 
 ```bash
-mc alias set odobreno-s3   https://s3.odobreno.ru   "$S3_USER"   "$S3_SECRET"
+mc alias set storage-s3   https://s3.storage.net   "$S3_USER"   "$S3_SECRET"
 
 unset S3_SECRET
 ```
@@ -248,10 +248,10 @@ unset S3_SECRET
 ```bash
 echo "Hello from MinIO $(date)" > /tmp/minio-test.txt
 
-mc cp /tmp/minio-test.txt odobreno-s3/odobreno-storage/
-mc ls odobreno-s3/odobreno-storage/
+mc cp /tmp/minio-test.txt storage-s3/storage-store/
+mc ls storage-s3/storage-store/
 
-mc cp   odobreno-s3/odobreno-storage/minio-test.txt   /tmp/minio-test-downloaded.txt
+mc cp   storage-s3/storage-store/minio-test.txt   /tmp/minio-test-downloaded.txt
 
 diff /tmp/minio-test.txt /tmp/minio-test-downloaded.txt &&
 echo "[OK] S3 upload/download verification passed."
@@ -260,7 +260,7 @@ echo "[OK] S3 upload/download verification passed."
 Clean up:
 
 ```bash
-mc rm odobreno-s3/odobreno-storage/minio-test.txt
+mc rm storage-s3/storage-store/minio-test.txt
 rm -f /tmp/minio-test.txt /tmp/minio-test-downloaded.txt
 ```
 
@@ -269,20 +269,20 @@ rm -f /tmp/minio-test.txt /tmp/minio-test-downloaded.txt
 Create another bucket as admin:
 
 ```bash
-mc mb odobreno/private-test
+mc mb storage/private-test
 ```
 
 These commands using the restricted account should fail with `Access Denied`:
 
 ```bash
-mc ls odobreno-s3/private-test
-mc cp /etc/hostname odobreno-s3/private-test/
+mc ls storage-s3/private-test
+mc cp /etc/hostname storage-s3/private-test/
 ```
 
 Remove the test bucket:
 
 ```bash
-mc rb odobreno/private-test
+mc rb storage/private-test
 ```
 
 ## Operations
@@ -291,7 +291,7 @@ Status:
 
 ```bash
 docker compose ps
-mc admin info odobreno
+mc admin info storage
 ```
 
 Logs:
@@ -335,10 +335,10 @@ Full quick check:
 
 | Item | Value |
 |---|---|
-| S3 endpoint | `https://s3.odobreno.ru` |
-| Console | `https://s3-console.odobreno.ru` |
+| S3 endpoint | `https://s3.storage.net` |
+| Console | `https://s3-console.storage.net` |
 | Docker project | `/mnt/hgsc1/projects/minio` |
 | Persistent data | `/mnt/hgsd1/minio/data` |
 | Storage filesystem | `/dev/sdd1`, XFS |
-| Primary bucket | `odobreno-storage` |
-| Restricted user | `odobreno-s3` |
+| Primary bucket | `storage-store` |
+| Restricted user | `storage-s3` |
