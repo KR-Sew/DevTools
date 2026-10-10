@@ -10,6 +10,8 @@ There is the script that can be used before update **GitLab**
 ## 🚀 Features
 
 - 📄[**`backup-before-update`**](./backup-before-update.sh)
+  - this script can be used for backup **GitLab** before installing updates
+    and also may be used to regular backup.
 
 ---
 
