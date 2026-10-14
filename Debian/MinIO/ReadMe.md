@@ -141,7 +141,7 @@ sudo ln -s /etc/nginx/sites-available/minio.conf /etc/nginx/sites-enabled/minio.
 For first certificate issuance, start with HTTP vhosts as required by your Certbot workflow, then run:
 
 ```bash
-sudo certbot --nginx   -d s3.odobreno.ru   -d s3-console.odobreno.ru
+sudo certbot --nginx   -d s3.storage.net   -d s3-console.storage.net
 ```
 
 After issuance, the config may be cleaned into the form in `nginx/minio.conf.example`.
